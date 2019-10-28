@@ -6,12 +6,234 @@
     android:layout_height="match_parent"
     tools:context=".Main2Activity">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <LinearLayout
+        android:id="@+id/buttonBill"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/try1"
+        android:orientation="horizontal"
+        android:tag="0"
+        android:onClick = "buttonClick"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="237dp">
 
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="15dp"
+            android:padding="10dp"
+            android:src="@drawable/bill" />
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginRight="20dp"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="Bill"
+            android:textColor="@android:color/white"
+            android:textSize="25sp"
+            android:textStyle="bold" />
 
-    </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/buttonTravel"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/buttonBill"
+        android:background="@drawable/try1"
+        android:orientation="horizontal"
+        android:tag="1"
+        tools:layout_editor_absoluteX="-5dp"
+        android:onClick = "buttonClick"
+        tools:layout_editor_absoluteY="164dp">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="15dp"
+            android:padding="10dp"
+            android:src="@drawable/airplane" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginRight="20dp"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="Travel"
+            android:textColor="@android:color/white"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/buttonEntertainment"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/buttonTravel"
+        android:background="@drawable/try1"
+        android:onClick="buttonClick"
+        android:orientation="horizontal"
+        android:tag="2"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="93dp">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="15dp"
+            android:padding="10dp"
+            android:src="@drawable/clapperboard" />
+
+        <TextView
+            android:layout_width="109dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="20dp"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="Entertain"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/buttonMedicine"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/buttonEntertainment"
+        android:background="@drawable/try1"
+        android:onClick = "buttonClick"
+        android:tag="3"
+        android:orientation="horizontal"
+        tools:layout_editor_absoluteX="105dp"
+        tools:layout_editor_absoluteY="16dp">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="15dp"
+            android:padding="10dp"
+            android:src="@drawable/medicine" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginRight="20dp"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="Health"
+            android:textColor="@android:color/white"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/buttonOthers"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/buttonMedicine"
+        android:background="@drawable/try1"
+        android:orientation="horizontal"
+        android:onClick = "buttonClick"
+        android:tag="4"
+        tools:layout_editor_absoluteX="210dp"
+        tools:layout_editor_absoluteY="93dp">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="15dp"
+            android:padding="10dp"
+            android:src="@drawable/puzzle" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginRight="20dp"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="Others"
+            android:textColor="@android:color/white"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/buttonHouse"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/buttonOthers"
+        android:onClick = "buttonClick"
+        android:tag="5"
+        android:background="@drawable/try1"
+        android:orientation="horizontal"
+        tools:layout_editor_absoluteX="210dp"
+        tools:layout_editor_absoluteY="164dp">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="15dp"
+            android:padding="10dp"
+            android:src="@drawable/home" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginRight="20dp"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="Home"
+            android:textColor="@android:color/white"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/buttonGroceries"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/buttonHouse"
+        android:background="@drawable/try1"
+        android:orientation="horizontal"
+        android:onClick = "buttonClick"
+        android:tag="6"
+        tools:layout_editor_absoluteX="210dp"
+        tools:layout_editor_absoluteY="237dp">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="15dp"
+            android:padding="10dp"
+            android:src="@drawable/groceries" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginRight="20dp"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="Groceries"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
