@@ -1,0 +1,67 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/ramkeerthyathinarayanan/Documents/Ram/dotnet/PennyPig-API-Version2/PennyPig-API-Version2/PennyPig-API-Version2.csproj": {}
+  },
+  "projects": {
+    "/Users/ramkeerthyathinarayanan/Documents/Ram/dotnet/PennyPig-API-Version2/PennyPig-API-Version2/PennyPig-API-Version2.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/ramkeerthyathinarayanan/Documents/Ram/dotnet/PennyPig-API-Version2/PennyPig-API-Version2/PennyPig-API-Version2.csproj",
+        "projectName": "PennyPig-API-Version2",
+        "projectPath": "/Users/ramkeerthyathinarayanan/Documents/Ram/dotnet/PennyPig-API-Version2/PennyPig-API-Version2/PennyPig-API-Version2.csproj",
+        "packagesPath": "/Users/ramkeerthyathinarayanan/.nuget/packages/",
+        "outputPath": "/Users/ramkeerthyathinarayanan/Documents/Ram/dotnet/PennyPig-API-Version2/PennyPig-API-Version2/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/ramkeerthyathinarayanan/.config/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.0": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.0": {
+          "dependencies": {
+            "MongoDB.Driver": {
+              "target": "Package",
+              "version": "[2.9.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.0.100/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

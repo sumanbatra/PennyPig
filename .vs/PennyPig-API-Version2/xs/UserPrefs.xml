@@ -1,0 +1,49 @@
+﻿<Properties StartupConfiguration="{89767D58-BD77-4947-8A4D-4B91079A3587}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="PennyPig-API-Version2/Models/UserDatabaseSettings.cs">
+    <Files>
+      <File FileName="PennyPig-API-Version2/Controllers/WeatherForecastController.cs" Line="43" Column="1" />
+      <File FileName="PennyPig-API-Version2/Program.cs" />
+      <File FileName="PennyPig-API-Version2/Startup.cs" Line="39" Column="1" />
+      <File FileName="PennyPig-API-Version2/WeatherForecast.cs" />
+      <File FileName="PennyPig-API-Version2/Controllers/UserController.cs" Line="11" Column="49" />
+      <File FileName="PennyPig-API-Version2/Models/UserDatabaseSettings.cs" Line="17" Column="41" />
+      <File FileName="PennyPig-API-Version2/Models/UserDetails.cs" Line="15" Column="39" />
+      <File FileName="PennyPig-API-Version2/Services/UserService.cs" Line="17" Column="16" />
+      <File FileName="PennyPig-API-Version2/Properties/launchSettings.json" />
+      <File FileName="PennyPig-API-Version2/appsettings.Development.json" Line="4" Column="51" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="PennyPig-API-Version2" expanded="True">
+            <Node name="PennyPig-API-Version2" expanded="True">
+              <Node name="Dependencies" expanded="True" />
+              <Node name="Controllers" expanded="True" />
+              <Node name="Models" expanded="True">
+                <Node name="UserDatabaseSettings.cs" selected="True" />
+              </Node>
+              <Node name="Properties" expanded="True" />
+              <Node name="Services" expanded="True" />
+              <Node name="appsettings.json" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.PennyPig-API-Version2 PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/ramkeerthyathinarayanan/Documents/Ram/dotnet/PennyPig-API-Version2/PennyPig-API-Version2/Controllers/WeatherForecastController.cs" relfile="PennyPig-API-Version2/Controllers/WeatherForecastController.cs" line="43" column="1" />
+      <Breakpoint file="/Users/ramkeerthyathinarayanan/Documents/Ram/dotnet/PennyPig-API-Version2/PennyPig-API-Version2/Controllers/UserController.cs" relfile="PennyPig-API-Version2/Controllers/UserController.cs" line="24" column="1" />
+      <Breakpoint file="/Users/ramkeerthyathinarayanan/Documents/Ram/dotnet/PennyPig-API-Version2/PennyPig-API-Version2/Services/UserService.cs" relfile="PennyPig-API-Version2/Services/UserService.cs" line="17" column="1" />
+      <Breakpoint file="/Users/ramkeerthyathinarayanan/Documents/Ram/dotnet/PennyPig-API-Version2/PennyPig-API-Version2/Controllers/UserController.cs" relfile="PennyPig-API-Version2/Controllers/UserController.cs" line="31" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
