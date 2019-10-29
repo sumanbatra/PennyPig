@@ -9,7 +9,7 @@ import android.widget.Toast;
 public class Main2Activity extends AppCompatActivity {
 
 
-    public void onclick(View view){
+    public void buttonClick(View view){
         String tag = view.getTag().toString();
         Toast.makeText(getApplicationContext(),tag,Toast.LENGTH_SHORT).show();
     }
