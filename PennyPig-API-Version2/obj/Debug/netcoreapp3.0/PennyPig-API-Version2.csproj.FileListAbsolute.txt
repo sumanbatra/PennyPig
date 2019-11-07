@@ -22,3 +22,4 @@
 /Users/ramkeerthyathinarayanan/Documents/Ram/dotnet/PennyPig-API-Version2/PennyPig-API-Version2/bin/Debug/netcoreapp3.0/MongoDB.Driver.Core.dll
 /Users/ramkeerthyathinarayanan/Documents/Ram/dotnet/PennyPig-API-Version2/PennyPig-API-Version2/bin/Debug/netcoreapp3.0/SharpCompress.dll
 /Users/ramkeerthyathinarayanan/Documents/Ram/dotnet/PennyPig-API-Version2/PennyPig-API-Version2/obj/Debug/netcoreapp3.0/PennyPig-API-Version2.csproj.CopyComplete
+/Users/ramkeerthyathinarayanan/Documents/Ram/dotnet/PennyPig-API-Version2/PennyPig-API-Version2/bin/Debug/netcoreapp3.0/Newtonsoft.Json.dll

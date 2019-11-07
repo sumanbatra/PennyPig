@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using PennyPig_API_Version2.Models;
 using PennyPig_API_Version2.Services;
 
@@ -29,6 +30,37 @@ namespace PennyPig_API_Version2.Controller
         [ActionName("GetAllUsers")]
         public ActionResult<List<UserDetails>> Get() =>
             _userService.Get();
+
+        [HttpPost]
+        [ActionName("ValidateUser")]
+        public IActionResult ValidateUser(string email, string password)
+        {
+            string temp = email;
+            UserDetails user = _userService.getUser(email, password);
+            if(user != null)
+            {
+                return new ObjectResult(user);
+            }
+            return new ObjectResult(JsonConvert.SerializeObject("Invalid User"));
+        }
+
+        [HttpPost]
+        [ActionName("AddUser")]
+        public IActionResult AddUser(string email, string password, string name)
+        {
+            string temp = email;
+            UserDetails user = new UserDetails();
+            user.email = email;
+            user.password = password;
+            user.name = name;
+
+            UserDetails addedUser = _userService.Create(user);
+            if (addedUser != null)
+            {
+                return new ObjectResult(addedUser);
+            }
+            return new ObjectResult(JsonConvert.SerializeObject("Error in adding user"));
+        }
 
         [HttpGet("{id:length(24)}", Name = "GetUser")]
         public ActionResult<UserDetails> Get(string id)
