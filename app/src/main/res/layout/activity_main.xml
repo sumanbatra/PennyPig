@@ -67,7 +67,7 @@
         app:srcCompat="@drawable/penny_pig_word" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/login_email"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:autofillHints="@string/email"
@@ -79,7 +79,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline3" />
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/login_password"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ems="10"
