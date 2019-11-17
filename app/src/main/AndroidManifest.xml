@@ -11,7 +11,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_pig_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
 
         <activity android:name=".MainActivity"
             android:theme="@style/SplashTheme">
@@ -22,7 +23,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".Main2Activity"></activity>
+        <activity android:name=".ExpenseMaster"></activity>
 
     </application>
 
