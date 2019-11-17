@@ -13,6 +13,7 @@ import android.widget.EditText;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
+import com.example.pennypig.Model.DataVault;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -41,35 +42,42 @@ public class MainActivity extends AppCompatActivity implements VolleyCallback{
             @Override
             public void onClick(View v) {
                 companyLogin(email.getText().toString(), password.getText().toString());
-                // Intent intent = new Intent(MainActivity.this, Main2Activity.class);
-                // startActivity(intent);
             }
         });
     }
 
     public void companyLogin(String email, String password) {
         RequestQueue requestQueue = Volley.newRequestQueue(this);
-        String URL = "https://10.0.2.2:5001/api/user/GetAllUsers";
+        String URL = "http://18.189.6.243/api/user/ValidateUser";
+        URL += "?email=" + email + "&password=" + password;
+
         final Map<String, String> params = new HashMap<String, String>();
-        params.put("name", email);
-        params.put("pwd", password);
+        params.put("email", email);
+        params.put("password", password);
 
         VolleyAPIService volleyAPIService = new VolleyAPIService();
         volleyAPIService.callback = this;
-        volleyAPIService.volleyGet(URL, MainActivity.this);
-        // volleyAPIService.volleyPost(URL, params, MainActivity.this);
+        volleyAPIService.volleyPost(URL, params, MainActivity.this);
     }
 
     @Override
     public void onSuccess(String result) {
-        Log.d("ATKGIVOLLY", "onSuccess: " + result);
-        if (!result.isEmpty()) {
+        Log.d(MAIN_ACTIVITY_TAG, "onSuccess: " + result);
+        if (!result.equals("Invalid User")) {
             GsonBuilder builder = new GsonBuilder();
             Gson gson = builder.create();
-            // Log.d("MAIN_ACTIVITY_TAG", String.valueOf(companyLogin.getId()));
-            // Intent userLoginActivity = new Intent(MainActivity.this, UserLogin.class);
-            // startActivity(userLoginActivity);
-        } else {
+            DataVault.UserDetail userDetail = gson.fromJson(result, DataVault.UserDetail.class);
+
+            String userid = String.valueOf(userDetail.getId());
+            String name = String.valueOf(userDetail.getEmail());
+            String email = String.valueOf(userDetail.getName());
+
+            Log.d(MAIN_ACTIVITY_TAG, String.valueOf(userDetail.getId()));
+
+            Intent intent = new Intent(MainActivity.this, ExpenseMaster.class);
+            startActivity(intent);
+        }
+        else {
             AlertDialog.Builder login_failed = new AlertDialog.Builder(MainActivity.this);
             login_failed.setMessage("Login Failed, invalid credentials")
                     .setPositiveButton("OK", new DialogInterface.OnClickListener() {
