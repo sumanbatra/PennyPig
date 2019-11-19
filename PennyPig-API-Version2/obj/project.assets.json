@@ -6218,7 +6218,7 @@
       "outputPath": "/Users/ramkeerthyathinarayanan/Documents/Ram/dotnet/PennyPig-API-Version2/PennyPig-API-Version2/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/ramkeerthyathinarayanan/.nuget/NuGet/NuGet.Config"
+        "/Users/ramkeerthyathinarayanan/.config/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.0"

@@ -1,16 +1,22 @@
 ﻿<Properties StartupConfiguration="{89767D58-BD77-4947-8A4D-4B91079A3587}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="PennyPig-API-Version2/Services/UserService.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="PennyPig-API-Version2/Controllers/IncomeController.cs">
     <Files>
-      <File FileName="PennyPig-API-Version2/Controllers/WeatherForecastController.cs" Line="43" Column="1" />
+      <File FileName="PennyPig-API-Version2/Controllers/WeatherForecastController.cs" Line="16" Column="6" />
       <File FileName="PennyPig-API-Version2/Program.cs" Line="1" Column="1" />
-      <File FileName="PennyPig-API-Version2/Startup.cs" Line="51" Column="20" />
+      <File FileName="PennyPig-API-Version2/Startup.cs" Line="42" Column="48" />
       <File FileName="PennyPig-API-Version2/WeatherForecast.cs" />
-      <File FileName="PennyPig-API-Version2/Controllers/UserController.cs" Line="31" Column="28" />
-      <File FileName="PennyPig-API-Version2/Models/UserDatabaseSettings.cs" Line="1" Column="1" />
-      <File FileName="PennyPig-API-Version2/Models/UserDetails.cs" Line="1" Column="1" />
-      <File FileName="PennyPig-API-Version2/Services/UserService.cs" Line="48" Column="137" />
-      <File FileName="PennyPig-API-Version2/Properties/launchSettings.json" Line="18" Column="8" />
-      <File FileName="PennyPig-API-Version2/appsettings.Development.json" Line="1" Column="1" />
+      <File FileName="PennyPig-API-Version2/Controllers/UserController.cs" Line="32" Column="22" />
+      <File FileName="PennyPig-API-Version2/Models/UserDatabaseSettings.cs" Line="20" Column="6" />
+      <File FileName="PennyPig-API-Version2/Models/UserDetails.cs" Line="7" Column="29" />
+      <File FileName="PennyPig-API-Version2/Services/UserService.cs" Line="27" Column="1" />
+      <File FileName="PennyPig-API-Version2/Properties/launchSettings.json" Line="30" Column="2" />
+      <File FileName="PennyPig-API-Version2/appsettings.Development.json" Line="7" Column="18" />
+      <File FileName="PennyPig-API-Version2/Services/ExpenseService.cs" Line="39" Column="52" />
+      <File FileName="PennyPig-API-Version2/Models/ExpenseDetails.cs" Line="7" Column="18" />
+      <File FileName="PennyPig-API-Version2/Controllers/ExpenseController.cs" Line="23" Column="1" />
+      <File FileName="PennyPig-API-Version2/Controllers/IncomeController.cs" Line="23" Column="1" />
+      <File FileName="PennyPig-API-Version2/Services/IncomeService.cs" Line="30" Column="1" />
+      <File FileName="PennyPig-API-Version2/Models/IncomeDetails.cs" Line="13" Column="46" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -18,20 +24,21 @@
           <Node name="PennyPig-API-Version2" expanded="True">
             <Node name="PennyPig-API-Version2" expanded="True">
               <Node name="Dependencies" expanded="True">
-                <Node name="PackageDependencies" expanded="True">
-                  <Node name="MongoDB.Driver" expanded="True" />
-                </Node>
+                <Node name="PackageDependencies" expanded="True" />
               </Node>
-              <Node name="Controllers" expanded="True" />
+              <Node name="Controllers" expanded="True">
+                <Node name="IncomeController.cs" selected="True" />
+              </Node>
               <Node name="Models" expanded="True" />
               <Node name="Properties" expanded="True" />
-              <Node name="Services" expanded="True">
-                <Node name="UserService.cs" selected="True" />
-              </Node>
+              <Node name="Services" expanded="True" />
               <Node name="appsettings.json" expanded="True" />
             </Node>
           </Node>
         </State>
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
@@ -40,8 +47,17 @@
   <MonoDevelop.Ide.ItemProperties.PennyPig-API-Version2 PreferredExecutionTarget="/Applications/Google Chrome.app" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
-      <Breakpoint file="/Users/ramkeerthyathinarayanan/Documents/Ram/dotnet/PennyPig-API-Version2/PennyPig-API-Version2/Controllers/UserController.cs" relfile="PennyPig-API-Version2/Controllers/UserController.cs" line="37" column="1" />
-      <Breakpoint file="/Users/ramkeerthyathinarayanan/Documents/Ram/dotnet/PennyPig-API-Version2/PennyPig-API-Version2/Services/UserService.cs" relfile="PennyPig-API-Version2/Services/UserService.cs" line="49" column="1" />
+      <Breakpoint file="/Users/ramkeerthyathinarayanan/Documents/Ram/dotnet/PennyPig-API-Version2/PennyPig-API-Version2/Services/UserService.cs" relfile="PennyPig-API-Version2/Services/UserService.cs" line="64" column="1" />
+      <Breakpoint file="/Users/ramkeerthyathinarayanan/Documents/Ram/dotnet/PennyPig-API-Version2/PennyPig-API-Version2/Controllers/UserController.cs" relfile="PennyPig-API-Version2/Controllers/UserController.cs" line="60" column="1" />
+      <Breakpoint file="/Users/ramkeerthyathinarayanan/Documents/Ram/dotnet/PennyPig-API-Version2/PennyPig-API-Version2/Controllers/UserController.cs" relfile="PennyPig-API-Version2/Controllers/UserController.cs" line="57" column="1" />
+      <Breakpoint file="/Users/ramkeerthyathinarayanan/Documents/Ram/dotnet/PennyPig-API-Version2/PennyPig-API-Version2/Controllers/UserController.cs" relfile="PennyPig-API-Version2/Controllers/UserController.cs" line="62" column="1" />
+      <Breakpoint file="/Users/ramkeerthyathinarayanan/Documents/Ram/dotnet/PennyPig-API-Version2/PennyPig-API-Version2/Controllers/UserController.cs" relfile="PennyPig-API-Version2/Controllers/UserController.cs" line="31" column="1" />
+      <Breakpoint file="/Users/ramkeerthyathinarayanan/Documents/Ram/dotnet/PennyPig-API-Version2/PennyPig-API-Version2/Controllers/UserController.cs" relfile="PennyPig-API-Version2/Controllers/UserController.cs" line="18" column="1" />
+      <Breakpoint file="/Users/ramkeerthyathinarayanan/Documents/Ram/dotnet/PennyPig-API-Version2/PennyPig-API-Version2/Controllers/ExpenseController.cs" relfile="PennyPig-API-Version2/Controllers/ExpenseController.cs" line="27" column="1" />
+      <Breakpoint file="/Users/ramkeerthyathinarayanan/Documents/Ram/dotnet/PennyPig-API-Version2/PennyPig-API-Version2/Controllers/ExpenseController.cs" relfile="PennyPig-API-Version2/Controllers/ExpenseController.cs" line="40" column="1" />
+      <Breakpoint file="/Users/ramkeerthyathinarayanan/Documents/Ram/dotnet/PennyPig-API-Version2/PennyPig-API-Version2/Controllers/IncomeController.cs" relfile="PennyPig-API-Version2/Controllers/IncomeController.cs" line="38" column="1" />
+      <Breakpoint file="/Users/ramkeerthyathinarayanan/Documents/Ram/dotnet/PennyPig-API-Version2/PennyPig-API-Version2/Controllers/ExpenseController.cs" relfile="PennyPig-API-Version2/Controllers/ExpenseController.cs" line="23" column="1" />
+      <Breakpoint file="/Users/ramkeerthyathinarayanan/Documents/Ram/dotnet/PennyPig-API-Version2/PennyPig-API-Version2/Services/ExpenseService.cs" relfile="PennyPig-API-Version2/Services/ExpenseService.cs" line="37" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />

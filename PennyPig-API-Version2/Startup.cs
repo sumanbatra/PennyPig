@@ -37,6 +37,10 @@ namespace PennyPig_API_Version2
 
             services.AddSingleton<UserService>();
 
+            services.AddSingleton<ExpenseService>();
+
+            services.AddSingleton<IncomeService>();
+
             services.AddControllers();
         }
 

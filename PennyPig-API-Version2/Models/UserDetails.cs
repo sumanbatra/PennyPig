@@ -21,4 +21,5 @@ namespace PennyPig_API_Version2.Models
 
         public string password { get; set; }
     }
+
 }
