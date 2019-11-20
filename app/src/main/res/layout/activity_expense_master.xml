@@ -264,4 +264,26 @@
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.52" />
 
+    <Button
+        android:id="@+id/buttonIncomePage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="27dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="296dp"
+        android:text="Income"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonBill" />
+
+    <Button
+        android:id="@+id/buttonExpensePage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="27dp"
+        android:layout_marginTop="14dp"
+        android:text="Expense"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonIncomePage" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity implements VolleyCallback{
     @Override
     public void onSuccess(String result) {
         Log.d(MAIN_ACTIVITY_TAG, "onSuccess: " + result);
-        if (!result.equals("Invalid User")) {
+        if (!result.equals("\"Invalid User\"")) {
             GsonBuilder builder = new GsonBuilder();
             Gson gson = builder.create();
             DataVault.UserDetail userDetail = gson.fromJson(result, DataVault.UserDetail.class);
