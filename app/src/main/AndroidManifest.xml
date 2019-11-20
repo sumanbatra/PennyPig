@@ -13,18 +13,19 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-
-        <activity android:name=".MainActivity"
-            android:theme="@style/SplashTheme">
+        <activity android:name=".Split">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/SplashTheme">
 
-        <activity android:name=".ExpenseMaster"></activity>
-
+        </activity>
+        <activity android:name=".ExpenseMaster" />
     </application>
 
 </manifest>
