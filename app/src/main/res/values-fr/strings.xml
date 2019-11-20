@@ -5,6 +5,7 @@
     <string name="password">Password</string>
     <string name="login">Login</string>
     <string name="no_account_yet_create_one">No account yet? Create One</string>
+
     <string name="_1">1</string>
     <string name="_2">2</string>
     <string name="_3">3</string>
@@ -21,4 +22,9 @@
     <string name="_divide">/</string>
     <string name="_equals">=</string>
     <string name="_dot">.</string>
+    <string name="expense">$ 0.00</string>
+    <string name="income">$ 0.00</string>
+    <string name="total_balance">$ 0.00</string>
+    <string name="add_income">Add income</string>
+    <string name="add_expense">Add expense</string>
 </resources>
