@@ -21,11 +21,20 @@ public class ExpenseMaster extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_expense_master);
 
-        Button button = findViewById(R.id.buttonIncomePage);
-        button.setOnClickListener(new View.OnClickListener() {
+        Button ibutton = findViewById(R.id.buttonIncomePage);
+        ibutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ExpenseMaster.this,Income.class);
+                startActivity(intent);
+            }
+        });
+
+        Button ebutton = findViewById(R.id.buttonExpensePage);
+        ebutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ExpenseMaster.this,Expense.class);
                 startActivity(intent);
             }
         });

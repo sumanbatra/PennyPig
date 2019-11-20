@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Income">
+    tools:context=".Expense">
 
     <TextView
         android:layout_width="match_parent"
@@ -26,7 +26,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="55dp"
         android:layout_marginEnd="10dp"
-        android:text="INCOME"
+        android:text="EXPENSE"
         android:textStyle="bold"
         android:textColor="@color/aqua_blue"
         android:textAlignment="center"
@@ -92,7 +92,7 @@
         app:layout_constraintVertical_bias="0.0">
 
         <Button
-            android:id="@+id/buttonIncomeOne"
+            android:id="@+id/buttonExpenseOne"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_row="0"
@@ -103,13 +103,13 @@
             android:layout_margin="5dp"
             android:background="@drawable/try1"
             android:onClick="setValue"
-            android:tag="buttonIncomeOne"
+            android:tag="buttonExpenseOne"
             android:text="@string/_1"
             android:textColor="@color/aqua_blue"
             android:textSize="25sp" />
 
         <Button
-            android:id="@+id/buttonIncomeTwo"
+            android:id="@+id/buttonExpenseTwo"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_row="0"
@@ -120,13 +120,13 @@
             android:layout_margin="5dp"
             android:background="@drawable/try1"
             android:onClick="setValue"
-            android:tag="buttonIncomeTwo"
+            android:tag="buttonExpenseTwo"
             android:text="@string/_2"
             android:textColor="@color/aqua_blue"
             android:textSize="25sp" />
 
         <Button
-            android:id="@+id/buttonIncomeThree"
+            android:id="@+id/buttonExpenseThree"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_row="0"
@@ -137,13 +137,13 @@
             android:layout_margin="5dp"
             android:background="@drawable/try1"
             android:onClick="setValue"
-            android:tag="buttonIncomeThree"
+            android:tag="buttonExpenseThree"
             android:text="@string/_3"
             android:textColor="@color/aqua_blue"
             android:textSize="25sp" />
 
         <Button
-            android:id="@+id/buttonIncomePlus"
+            android:id="@+id/buttonExpensePlus"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_columnWeight="1"
@@ -151,13 +151,13 @@
             android:layout_margin="5dp"
             android:background="@drawable/try1"
             android:onClick="setValue"
-            android:tag="buttonIncomePlus"
+            android:tag="buttonExpensePlus"
             android:text="@string/_add"
             android:textColor="@color/aqua_blue"
             android:textSize="25sp" />
 
         <Button
-            android:id="@+id/buttonIncomeFour"
+            android:id="@+id/buttonExpenseFour"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_row="1"
@@ -168,13 +168,13 @@
             android:layout_margin="5dp"
             android:background="@drawable/try1"
             android:onClick="setValue"
-            android:tag="buttonIncomeFour"
+            android:tag="buttonExpenseFour"
             android:text="@string/_4"
             android:textColor="@color/aqua_blue"
             android:textSize="25sp" />
 
         <Button
-            android:id="@+id/buttonIncomeFive"
+            android:id="@+id/buttonExpenseFive"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_columnWeight="1"
@@ -182,13 +182,13 @@
             android:layout_margin="5dp"
             android:background="@drawable/try1"
             android:onClick="setValue"
-            android:tag="buttonIncomeFive"
+            android:tag="buttonExpenseFive"
             android:text="@string/_5"
             android:textColor="@color/aqua_blue"
             android:textSize="25sp" />
 
         <Button
-            android:id="@+id/buttonIncomeSix"
+            android:id="@+id/buttonExpenseSix"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_columnWeight="1"
@@ -196,13 +196,13 @@
             android:layout_margin="5dp"
             android:background="@drawable/try1"
             android:onClick="setValue"
-            android:tag="buttonIncomeSix"
+            android:tag="buttonExpenseSix"
             android:text="@string/_6"
             android:textColor="@color/aqua_blue"
             android:textSize="25sp" />
 
         <Button
-            android:id="@+id/buttonIncomeMinus"
+            android:id="@+id/buttonExpenseMinus"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_columnWeight="1"
@@ -210,13 +210,13 @@
             android:layout_margin="5dp"
             android:background="@drawable/try1"
             android:onClick="setValue"
-            android:tag="buttonIncomeMinus"
+            android:tag="buttonExpenseMinus"
             android:text="@string/_subtract"
             android:textColor="@color/aqua_blue"
             android:textSize="25sp" />
 
         <Button
-            android:id="@+id/buttonIncomeSeven"
+            android:id="@+id/buttonExpenseSeven"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_columnWeight="1"
@@ -224,13 +224,13 @@
             android:layout_margin="5dp"
             android:background="@drawable/try1"
             android:onClick="setValue"
-            android:tag="buttonIncomeSeven"
+            android:tag="buttonExpenseSeven"
             android:text="@string/_7"
             android:textColor="@color/aqua_blue"
             android:textSize="25sp" />
 
         <Button
-            android:id="@+id/buttonIncomeEight"
+            android:id="@+id/buttonExpenseEight"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_columnWeight="1"
@@ -238,13 +238,13 @@
             android:layout_margin="5dp"
             android:background="@drawable/try1"
             android:onClick="setValue"
-            android:tag="buttonIncomeEight"
+            android:tag="buttonExpenseEight"
             android:text="@string/_8"
             android:textColor="@color/aqua_blue"
             android:textSize="25sp" />
 
         <Button
-            android:id="@+id/buttonIncomeNine"
+            android:id="@+id/buttonExpenseNine"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_columnWeight="1"
@@ -252,13 +252,13 @@
             android:layout_margin="5dp"
             android:background="@drawable/try1"
             android:onClick="setValue"
-            android:tag="buttonIncomeNine"
+            android:tag="buttonExpenseNine"
             android:text="@string/_9"
             android:textColor="@color/aqua_blue"
             android:textSize="25sp" />
 
         <Button
-            android:id="@+id/buttonIncomeMultiplication"
+            android:id="@+id/buttonExpenseMultiplication"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_columnWeight="1"
@@ -266,13 +266,13 @@
             android:layout_margin="5dp"
             android:background="@drawable/try1"
             android:onClick="setValue"
-            android:tag="buttonIncomeMultiplication"
+            android:tag="buttonExpenseMultiplication"
             android:text="@string/_multiply"
             android:textColor="@color/aqua_blue"
             android:textSize="25sp" />
 
         <Button
-            android:id="@+id/buttonIncomeZero"
+            android:id="@+id/buttonExpenseZero"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_row="3"
@@ -282,13 +282,13 @@
             android:layout_margin="5dp"
             android:background="@drawable/try1"
             android:onClick="setValue"
-            android:tag="buttonIncomeZero"
+            android:tag="buttonExpenseZero"
             android:text="@string/_0"
             android:textColor="@color/aqua_blue"
             android:textSize="25sp" />
 
         <Button
-            android:id="@+id/buttonIncomeDot"
+            android:id="@+id/buttonExpenseDot"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_row="3"
@@ -298,12 +298,12 @@
             android:layout_margin="5dp"
             android:background="@drawable/try1"
             android:onClick="setValue"
-            android:tag="buttonIncomeDot"
+            android:tag="buttonExpenseDot"
             android:text="@string/_dot"
             android:textColor="@color/aqua_blue"
             android:textSize="25sp" />
         <Button
-            android:id="@+id/buttonIncomeDivision"
+            android:id="@+id/buttonExpenseDivision"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_column="3"
@@ -312,13 +312,13 @@
             android:layout_margin="5dp"
             android:background="@drawable/try1"
             android:onClick="setValue"
-            android:tag="buttonIncomeDivision"
+            android:tag="buttonExpenseDivision"
             android:text="@string/_divide"
             android:textColor="@color/aqua_blue"
             android:textSize="25sp" />
 
         <Button
-            android:id="@+id/buttonIncomeEquals"
+            android:id="@+id/buttonExpenseEquals"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_row="3"
@@ -328,7 +328,7 @@
             android:layout_margin="5dp"
             android:background="@drawable/try1"
             android:onClick="setValue"
-            android:tag="buttonIncomeEquals"
+            android:tag="buttonExpenseEquals"
             android:text="@string/_equals"
             android:textColor="@color/aqua_blue"
             android:textSize="25sp" />
@@ -345,14 +345,29 @@
     </GridLayout>
 
     <Button
-        android:id="@+id/buttonIncomeFinal"
+        android:id="@+id/buttonExpenseCategory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/try1"
+        android:tag="buttonExpenseCategory"
+        android:text="SELECT CATEGORY"
+        android:textColor="@color/aqua_blue"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gridLayout"
+        app:layout_constraintVertical_bias="0.193"
+        tools:layout_editor_absoluteX="-9dp" />
+
+    <Button
+        android:id="@+id/buttonExpenseFinal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="5dp"
         android:background="@drawable/try1"
-        android:tag="buttonIncomeEquals"
-        android:text="ADD INCOME"
+        android:tag="buttonExpenseEquals"
+        android:text="ADD EXPENSE"
         android:textColor="@color/aqua_blue"
         android:textSize="25sp"
         app:layout_constraintBottom_toBottomOf="parent"
