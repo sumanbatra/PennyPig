@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Income">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="10dp"
+        android:text="DATE"
+        android:id="@+id/dateTextView"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="55dp"
+        android:layout_marginEnd="10dp"
+        android:text="INCOME"
+        android:textStyle="bold"
+        android:textColor="@color/aqua_blue"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginRight="10dp"
+        android:columnCount="2"
+        android:orientation="horizontal"
+        android:rowCount="1"
+        app:layout_constraintBottom_toTopOf="@+id/gridLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/valueText"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_row="0"
+            android:layout_column="0"
+            android:layout_columnWeight="5"
+            android:layout_gravity="fill"
+            android:background="@color/aqua_blue"
+            android:text="@string/_0"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="45sp" />
+
+        <ImageButton
+            android:id="@+id/eraseIncomeButton"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:background="@color/aqua_blue"
+            android:onClick="setValue"
+            android:scaleType="fitCenter"
+            android:src="@drawable/backspace"
+            android:tag="eraseIncomeButton" />
+    </GridLayout>
+
+    <GridLayout
+        android:id="@+id/gridLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="220dp"
+        android:layout_marginBottom="50dp"
+        android:columnCount="4"
+        android:rowCount="4"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <Button
+            android:id="@+id/buttonIncomeOne"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_row="0"
+            android:layout_rowWeight="1"
+            android:layout_column="0"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_margin="5dp"
+            android:background="@drawable/try1"
+            android:onClick="setValue"
+            android:tag="buttonIncomeOne"
+            android:text="@string/_1"
+            android:textColor="@color/aqua_blue"
+            android:textSize="25sp" />
+
+        <Button
+            android:id="@+id/buttonIncomeTwo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_row="0"
+            android:layout_rowWeight="1"
+            android:layout_column="1"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_margin="5dp"
+            android:background="@drawable/try1"
+            android:onClick="setValue"
+            android:tag="buttonIncomeTwo"
+            android:text="@string/_2"
+            android:textColor="@color/aqua_blue"
+            android:textSize="25sp" />
+
+        <Button
+            android:id="@+id/buttonIncomeThree"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_row="0"
+            android:layout_rowWeight="1"
+            android:layout_column="2"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_margin="5dp"
+            android:background="@drawable/try1"
+            android:onClick="setValue"
+            android:tag="buttonIncomeThree"
+            android:text="@string/_3"
+            android:textColor="@color/aqua_blue"
+            android:textSize="25sp" />
+
+        <Button
+            android:id="@+id/buttonIncomePlus"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_margin="5dp"
+            android:background="@drawable/try1"
+            android:onClick="setValue"
+            android:tag="buttonIncomePlus"
+            android:text="@string/_add"
+            android:textColor="@color/aqua_blue"
+            android:textSize="25sp" />
+
+        <Button
+            android:id="@+id/buttonIncomeFour"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_row="1"
+            android:layout_rowWeight="1"
+            android:layout_column="0"
+
+            android:layout_gravity="fill"
+            android:layout_margin="5dp"
+            android:background="@drawable/try1"
+            android:onClick="setValue"
+            android:tag="buttonIncomeFour"
+            android:text="@string/_4"
+            android:textColor="@color/aqua_blue"
+            android:textSize="25sp" />
+
+        <Button
+            android:id="@+id/buttonIncomeFive"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_margin="5dp"
+            android:background="@drawable/try1"
+            android:onClick="setValue"
+            android:tag="buttonIncomeFive"
+            android:text="@string/_5"
+            android:textColor="@color/aqua_blue"
+            android:textSize="25sp" />
+
+        <Button
+            android:id="@+id/buttonIncomeSix"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_margin="5dp"
+            android:background="@drawable/try1"
+            android:onClick="setValue"
+            android:tag="buttonIncomeSix"
+            android:text="@string/_6"
+            android:textColor="@color/aqua_blue"
+            android:textSize="25sp" />
+
+        <Button
+            android:id="@+id/buttonIncomeMinus"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_margin="5dp"
+            android:background="@drawable/try1"
+            android:onClick="setValue"
+            android:tag="buttonIncomeMinus"
+            android:text="@string/_subtract"
+            android:textColor="@color/aqua_blue"
+            android:textSize="25sp" />
+
+        <Button
+            android:id="@+id/buttonIncomeSeven"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_margin="5dp"
+            android:background="@drawable/try1"
+            android:onClick="setValue"
+            android:tag="buttonIncomeSeven"
+            android:text="@string/_7"
+            android:textColor="@color/aqua_blue"
+            android:textSize="25sp" />
+
+        <Button
+            android:id="@+id/buttonIncomeEight"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_margin="5dp"
+            android:background="@drawable/try1"
+            android:onClick="setValue"
+            android:tag="buttonIncomeEight"
+            android:text="@string/_8"
+            android:textColor="@color/aqua_blue"
+            android:textSize="25sp" />
+
+        <Button
+            android:id="@+id/buttonIncomeNine"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_margin="5dp"
+            android:background="@drawable/try1"
+            android:onClick="setValue"
+            android:tag="buttonIncomeNine"
+            android:text="@string/_9"
+            android:textColor="@color/aqua_blue"
+            android:textSize="25sp" />
+
+        <Button
+            android:id="@+id/buttonIncomeMultiplication"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_margin="5dp"
+            android:background="@drawable/try1"
+            android:onClick="setValue"
+            android:tag="buttonIncomeMultiplication"
+            android:text="@string/_multiply"
+            android:textColor="@color/aqua_blue"
+            android:textSize="25sp" />
+
+        <Button
+            android:id="@+id/buttonIncomeZero"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_row="3"
+            android:layout_column="0"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_margin="5dp"
+            android:background="@drawable/try1"
+            android:onClick="setValue"
+            android:tag="buttonIncomeZero"
+            android:text="@string/_0"
+            android:textColor="@color/aqua_blue"
+            android:textSize="25sp" />
+
+        <Button
+            android:id="@+id/buttonIncomeDot"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_row="3"
+            android:layout_column="1"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_margin="5dp"
+            android:background="@drawable/try1"
+            android:onClick="setValue"
+            android:tag="buttonIncomeDot"
+            android:text="@string/_dot"
+            android:textColor="@color/aqua_blue"
+            android:textSize="25sp" />
+        <Button
+            android:id="@+id/buttonIncomeDivision"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_column="3"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_margin="5dp"
+            android:background="@drawable/try1"
+            android:onClick="setValue"
+            android:tag="buttonIncomeDivision"
+            android:text="@string/_divide"
+            android:textColor="@color/aqua_blue"
+            android:textSize="25sp" />
+
+        <Button
+            android:id="@+id/buttonIncomeEquals"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_row="3"
+            android:layout_column="2"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_margin="5dp"
+            android:background="@drawable/try1"
+            android:onClick="setValue"
+            android:tag="buttonIncomeEquals"
+            android:text="@string/_equals"
+            android:textColor="@color/aqua_blue"
+            android:textSize="25sp" />
+    </GridLayout>
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gridLayout">
+
+
+    </GridLayout>
+
+    <Button
+        android:id="@+id/buttonIncomeFinal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/try1"
+        android:tag="buttonIncomeEquals"
+        android:text="ADD INCOME"
+        android:textColor="@color/aqua_blue"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gridLayout"
+        app:layout_constraintVertical_bias="0.818"
+        tools:layout_editor_absoluteX="0dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>

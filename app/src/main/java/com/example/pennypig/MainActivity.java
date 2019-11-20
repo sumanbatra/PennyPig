@@ -14,6 +14,7 @@ import android.widget.EditText;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
 import com.example.pennypig.Model.DataVault;
+import com.example.pennypig.SharedPreference.SaveSharedPreference;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -73,6 +74,8 @@ public class MainActivity extends AppCompatActivity implements VolleyCallback{
             String email = String.valueOf(userDetail.getName());
 
             Log.d(MAIN_ACTIVITY_TAG, String.valueOf(userDetail.getId()));
+
+            SaveSharedPreference.setUserId(MainActivity.this, userid);
 
             Intent intent = new Intent(MainActivity.this, MenuActivity.class);
             startActivity(intent);
