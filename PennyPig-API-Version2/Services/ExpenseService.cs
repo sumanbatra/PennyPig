@@ -48,6 +48,28 @@ namespace PennyPig_API_Version2.Services
             _expense.InsertOne(expenseDetails);
         }
 
+        public List<ExpenseDetails> getUserExpenses(string userId)
+        {
+            try
+            {
+                List<ExpenseDetails> expense = new List<ExpenseDetails>();
+                expense = _expense.Find(new BsonDocument { { "user_id", userId } }).ToList();
+                /* _expense.Find<List<ExpenseDetails>>(new BsonDocument { { "user_id", userId } }).
+                    ForEachAsync(
+                        expense =>
+                            {
+
+                            }
+                    ); */
+                return expense;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return null;
+            }
+        }
+
         public List<ExpenseDetails> Get() =>
             _expense.Find(user => true).ToList();
     }

@@ -1,22 +1,22 @@
 ﻿<Properties StartupConfiguration="{89767D58-BD77-4947-8A4D-4B91079A3587}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="PennyPig-API-Version2/Controllers/IncomeController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="PennyPig-API-Version2/Services/IncomeService.cs">
     <Files>
       <File FileName="PennyPig-API-Version2/Controllers/WeatherForecastController.cs" Line="16" Column="6" />
-      <File FileName="PennyPig-API-Version2/Program.cs" Line="1" Column="1" />
-      <File FileName="PennyPig-API-Version2/Startup.cs" Line="42" Column="48" />
+      <File FileName="PennyPig-API-Version2/Program.cs" />
+      <File FileName="PennyPig-API-Version2/Startup.cs" />
       <File FileName="PennyPig-API-Version2/WeatherForecast.cs" />
-      <File FileName="PennyPig-API-Version2/Controllers/UserController.cs" Line="32" Column="22" />
-      <File FileName="PennyPig-API-Version2/Models/UserDatabaseSettings.cs" Line="20" Column="6" />
-      <File FileName="PennyPig-API-Version2/Models/UserDetails.cs" Line="7" Column="29" />
-      <File FileName="PennyPig-API-Version2/Services/UserService.cs" Line="27" Column="1" />
-      <File FileName="PennyPig-API-Version2/Properties/launchSettings.json" Line="30" Column="2" />
-      <File FileName="PennyPig-API-Version2/appsettings.Development.json" Line="7" Column="18" />
-      <File FileName="PennyPig-API-Version2/Services/ExpenseService.cs" Line="39" Column="52" />
-      <File FileName="PennyPig-API-Version2/Models/ExpenseDetails.cs" Line="7" Column="18" />
-      <File FileName="PennyPig-API-Version2/Controllers/ExpenseController.cs" Line="23" Column="1" />
-      <File FileName="PennyPig-API-Version2/Controllers/IncomeController.cs" Line="23" Column="1" />
-      <File FileName="PennyPig-API-Version2/Services/IncomeService.cs" Line="30" Column="1" />
-      <File FileName="PennyPig-API-Version2/Models/IncomeDetails.cs" Line="13" Column="46" />
+      <File FileName="PennyPig-API-Version2/Controllers/UserController.cs" />
+      <File FileName="PennyPig-API-Version2/Models/UserDatabaseSettings.cs" />
+      <File FileName="PennyPig-API-Version2/Models/UserDetails.cs" />
+      <File FileName="PennyPig-API-Version2/Services/UserService.cs" />
+      <File FileName="PennyPig-API-Version2/Properties/launchSettings.json" />
+      <File FileName="PennyPig-API-Version2/appsettings.Development.json" />
+      <File FileName="PennyPig-API-Version2/Services/ExpenseService.cs" />
+      <File FileName="PennyPig-API-Version2/Models/ExpenseDetails.cs" />
+      <File FileName="PennyPig-API-Version2/Controllers/ExpenseController.cs" />
+      <File FileName="PennyPig-API-Version2/Controllers/IncomeController.cs" />
+      <File FileName="PennyPig-API-Version2/Services/IncomeService.cs" Line="18" Column="74" />
+      <File FileName="PennyPig-API-Version2/Models/IncomeDetails.cs" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -26,19 +26,16 @@
               <Node name="Dependencies" expanded="True">
                 <Node name="PackageDependencies" expanded="True" />
               </Node>
-              <Node name="Controllers" expanded="True">
-                <Node name="IncomeController.cs" selected="True" />
-              </Node>
+              <Node name="Controllers" expanded="True" />
               <Node name="Models" expanded="True" />
               <Node name="Properties" expanded="True" />
-              <Node name="Services" expanded="True" />
+              <Node name="Services" expanded="True">
+                <Node name="ExpenseService.cs" selected="True" />
+              </Node>
               <Node name="appsettings.json" expanded="True" />
             </Node>
           </Node>
         </State>
-      </Pad>
-      <Pad Id="MonoDevelop.Debugger.WatchPad">
-        <State />
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>

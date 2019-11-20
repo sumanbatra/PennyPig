@@ -39,5 +39,12 @@ namespace PennyPig_API_Version2.Controllers
         {
             return _incomeService.Get();
         }
+
+        [HttpPost]
+        [ActionName("GetUserIncomes")]
+        public ActionResult<List<IncomeDetails>> GetUserIncomes(string user_id)
+        {
+            return _incomeService.getUserIncomes(user_id);
+        }
     }
 }

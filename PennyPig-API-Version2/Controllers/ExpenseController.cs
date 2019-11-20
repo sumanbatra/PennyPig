@@ -39,5 +39,12 @@ namespace PennyPig_API_Version2.Controllers
         {
             return _expenseService.Get();
         }
+
+        [HttpPost]
+        [ActionName("GetUserExpenses")]
+        public ActionResult<List<ExpenseDetails>> GetUserExpense(string user_id)
+        {
+            return _expenseService.getUserExpenses(user_id);
+        }
     }
 }

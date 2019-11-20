@@ -32,6 +32,22 @@ namespace PennyPig_API_Version2.Services
             _income.InsertOne(incomeDetails);
         }
 
+        public List<IncomeDetails> getUserIncomes(string userId)
+        {
+            try
+            {
+                List<IncomeDetails> income = new List<IncomeDetails>();
+                income = _income.Find(new BsonDocument { { "user_id", userId } }).ToList();
+               
+                return income;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return null;
+            }
+        }
+
         public List<IncomeDetails> Get() =>
             _income.Find(user => true).ToList();
     }
