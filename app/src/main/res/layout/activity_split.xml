@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Split">
+
+    <TextView
+        android:id="@+id/split"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@color/aqua_blue"
+        android:gravity="center"
+        android:text="SPLIT"
+        android:textColor="@color/white"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/split_amount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:gravity="center"
+        android:hint="Enter the amount here"
+        app:layout_constraintTop_toTopOf="@id/split"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <TextView
+        android:id="@+id/id_cateo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:gravity="center"
+        android:padding="15dp"
+        android:text="Categories"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/split_amount" />
+
+    <Spinner
+        android:id="@+id/category_array"
+        android:layout_width="284dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="32dp"
+        android:padding="20dp"
+        android:layout_marginRight="10dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/id_cateo"
+        app:layout_constraintTop_toBottomOf="@+id/split_amount"
+        />
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/split_accordingly"
+/>
+</androidx.constraintlayout.widget.ConstraintLayout>

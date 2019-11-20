@@ -4,6 +4,22 @@
     <string name="password">Password</string>
     <string name="login">Login</string>
     <string name="no_account_yet_create_one">No account yet? Create One</string>
+
+    <string-array name="categories">
+        <item>Medicines</item>
+        <item>Transport</item>
+        <item>Entertainment</item>
+        <item>Bills</item>
+        <item>Rent</item>
+        <item>Grocery</item>
+        <item>Other</item>
+    </string-array>
+
+    <string-array name="splitaccordingly">
+        <item>Equally</item>
+        <item>Unequally</item>
+    </string-array>
+
     <string name="_1">1</string>
     <string name="_2">2</string>
     <string name="_3">3</string>
@@ -20,4 +36,5 @@
     <string name="_divide">/</string>
     <string name="_equals">=</string>
     <string name="_dot">.</string>
+
 </resources>
