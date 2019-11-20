@@ -21,13 +21,18 @@ public class Split extends AppCompatActivity implements AdapterView.OnItemSelect
 
         TextView textView = (TextView) findViewById(R.id.split);
         EditText editText = (EditText) findViewById(R.id.split_amount);
+        Spinner cateo_spinner = (Spinner) findViewById(R.id.category_array);
+        Spinner split_spinner = (Spinner) findViewById(R.id.split_accordingly);
 
-
-        Spinner spinner = (Spinner) findViewById(R.id.category_array);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.categories, R.layout.support_simple_spinner_dropdown_item);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.categories, R.layout.support_simple_spinner_dropdown_item);
         adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
-        spinner.setOnItemSelectedListener(this);
+        cateo_spinner.setAdapter(adapter);
+        cateo_spinner.setOnItemSelectedListener(this);
+
+        ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(this, R.array.splitAccordingly, R.layout.support_simple_spinner_dropdown_item);
+        adapter1.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+        split_spinner.setAdapter(adapter1);
+        split_spinner.setOnItemSelectedListener(this);
     }
 
     @Override
@@ -38,6 +43,7 @@ public class Split extends AppCompatActivity implements AdapterView.OnItemSelect
 
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
-
     }
+
+
 }

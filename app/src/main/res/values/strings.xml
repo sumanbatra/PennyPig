@@ -15,7 +15,7 @@
         <item>Other</item>
     </string-array>
 
-    <string-array name="splitaccordingly">
+    <string-array name="splitAccordingly">
         <item>Equally</item>
         <item>Unequally</item>
     </string-array>

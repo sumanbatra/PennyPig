@@ -11,21 +11,24 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:background="@color/aqua_blue"
+        android:textColor="@color/aqua_blue"
+        android:textSize="25sp"
         android:gravity="center"
+        android:background="@drawable/try1"
         android:text="SPLIT"
-        android:textColor="@color/white"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.818"
+        tools:layout_editor_absoluteX="0dp"/>
 
     <EditText
         android:id="@+id/split_amount"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="60dp"
         android:gravity="center"
         android:hint="Enter the amount here"
         app:layout_constraintTop_toTopOf="@id/split"
@@ -47,17 +50,49 @@
         android:layout_width="284dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="32dp"
-        android:padding="20dp"
+        android:layout_marginTop="26dp"
+        android:padding="15dp"
         android:layout_marginRight="10dp"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toEndOf="@+id/id_cateo"
         app:layout_constraintTop_toBottomOf="@+id/split_amount"
         />
 
+    <TextView
+        android:id="@+id/id_split"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:gravity="center"
+        android:padding="15dp"
+        android:text="Split Type"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/id_cateo" />
+
     <Spinner
-        android:layout_width="match_parent"
+        android:layout_width="284dp"
         android:layout_height="wrap_content"
         android:id="@+id/split_accordingly"
+        android:layout_marginTop="2dp"
+        android:layout_marginRight="10dp"
+        android:padding="15dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/id_split"
+        app:layout_constraintTop_toBottomOf="@+id/category_array"
 />
+    <Button
+        android:id="@+id/button_submit_income"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/try1"
+        android:tag="submit"
+        android:text="SUBMIT"
+        android:textColor="@color/aqua_blue"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/split_accordingly"
+        app:layout_constraintVertical_bias="0.818"
+        tools:layout_editor_absoluteX="0dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
