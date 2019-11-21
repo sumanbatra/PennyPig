@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,6 +30,7 @@ public class Income extends AppCompatActivity implements IncomeCallback{
     double initialValue=0;
     int equalCheck =0;
     ProgressDialog progressDialog;
+    boolean checkDot=false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -125,16 +127,24 @@ public class Income extends AppCompatActivity implements IncomeCallback{
             Log.i(TAG, "setValue: buttonZero");
             value +="0";
         }
-        else if(tag.equals("buttonIncomeDot")){
+        else if(tag.equals("buttonIncomeDot") && checkDot == false){
             Log.i(TAG, "setValue: buttonDot");
             value +=".";
+            checkDot = true;
         }
         else if(tag.equals("eraseIncomeButton") && value.length()>0){
             Log.i(TAG, "setValue: Erase Button");
             value = value.substring(0, value.length()-1);
+            if(value.contains(".")){
+                checkDot = true;
+            }
+            else {
+                checkDot = false;
+            }
             if (value.equals("ERRO")){
                 value = "";
             }
+
         }
         else if(tag.equals("buttonIncomePlus")){
             initialValue = Double.parseDouble(value);
