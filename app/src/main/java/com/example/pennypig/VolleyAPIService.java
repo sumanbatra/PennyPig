@@ -20,7 +20,9 @@ public class VolleyAPIService extends Service {
 
     static final String VOLLEY_API_SERVICE = "VolleyAPIService";
 
-    public VolleyCallback callback;
+    public VolleyCallback callback = null;
+    public IncomeCallback incomeCallback = null;
+    public ExpenseCallback expenseCallback = null;
 
     public VolleyAPIService() {
     }
@@ -39,7 +41,15 @@ public class VolleyAPIService extends Service {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        callback.onSuccess(response);
+                        if(callback != null) {
+                            callback.onSuccess(response);
+                        }
+                        else if(incomeCallback != null) {
+                            incomeCallback.onIncomeSuccess(response);
+                        }
+                        else if(expenseCallback != null) {
+                            expenseCallback.onExpenseSuccess(response);
+                        }
                     }
                 },
                 new Response.ErrorListener() {

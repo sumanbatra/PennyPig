@@ -64,7 +64,7 @@
             android:textSize="45sp" />
 
         <ImageButton
-            android:id="@+id/eraseButton"
+            android:id="@+id/eraseExpenseButton"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_columnWeight="1"
