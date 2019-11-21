@@ -13,7 +13,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-
         <activity android:name=".Split"/>
         <activity android:name=".Expense"></activity>
         <activity android:name=".Income" />
@@ -23,7 +22,6 @@
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
