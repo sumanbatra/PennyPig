@@ -16,14 +16,16 @@
 
         <activity
             android:name=".Split">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+
         </activity>
 
         <activity android:name=".Expense"></activity>
-        <activity android:name=".Income" />
+        <activity android:name=".Income">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
         <activity
             android:name=".MainActivity"
             android:theme="@style/SplashTheme">

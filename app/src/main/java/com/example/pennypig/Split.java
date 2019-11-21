@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -33,6 +34,13 @@ public class Split extends AppCompatActivity implements AdapterView.OnItemSelect
         adapter1.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
         split_spinner.setAdapter(adapter1);
         split_spinner.setOnItemSelectedListener(this);
+
+        ImageButton imageButton = findViewById(R.id.add_contact_button);
+        imageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            }
+        });
     }
 
     @Override

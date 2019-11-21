@@ -10,27 +10,39 @@
         android:id="@+id/split"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="16dp"
-        android:textColor="@color/aqua_blue"
-        android:textSize="25sp"
-        android:gravity="center"
-        android:background="@drawable/try1"
+        android:layout_marginEnd="10dp"
         android:text="SPLIT"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        android:textAlignment="center"
+        android:textColor="@color/aqua_blue"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.818"
-        tools:layout_editor_absoluteX="0dp"/>
+        tools:layout_editor_absoluteX="0dp" />
 
     <EditText
         android:id="@+id/split_amount"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_row="0"
+        android:layout_column="0"
+        android:layout_columnWeight="5"
+        android:layout_gravity="fill"
+        android:layout_marginLeft="10dp"
         android:layout_marginTop="60dp"
+        android:layout_marginRight="10dp"
+        android:background="@color/aqua_blue"
         android:gravity="center"
         android:hint="Enter the amount here"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/split"
         tools:layout_editor_absoluteX="0dp" />
 
@@ -38,10 +50,12 @@
         android:id="@+id/id_cateo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:gravity="center"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="33dp"
+        android:gravity="start"
         android:padding="15dp"
         android:text="Categories"
+        android:textColor="@color/aqua_blue"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/split_amount" />
 
@@ -50,36 +64,38 @@
         android:layout_width="284dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="26dp"
-        android:padding="15dp"
+        android:layout_marginTop="25dp"
         android:layout_marginRight="10dp"
+        android:padding="15dp"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toEndOf="@+id/id_cateo"
-        app:layout_constraintTop_toBottomOf="@+id/split_amount"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/split_amount" />
 
     <TextView
         android:id="@+id/id_split"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:gravity="center"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="34dp"
+        android:gravity="start"
         android:padding="15dp"
         android:text="Split Type"
+        android:textColor="@color/aqua_blue"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/id_cateo" />
 
     <Spinner
+        android:id="@+id/split_accordingly"
         android:layout_width="284dp"
         android:layout_height="wrap_content"
-        android:id="@+id/split_accordingly"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="2dp"
         android:layout_marginRight="10dp"
         android:padding="15dp"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toEndOf="@+id/id_split"
-        app:layout_constraintTop_toBottomOf="@+id/category_array"
-/>
+        app:layout_constraintTop_toBottomOf="@+id/category_array" />
+
     <Button
         android:id="@+id/button_submit_income"
         android:layout_width="match_parent"
@@ -95,4 +111,34 @@
         app:layout_constraintTop_toBottomOf="@+id/split_accordingly"
         app:layout_constraintVertical_bias="0.818"
         tools:layout_editor_absoluteX="0dp" />
+
+    <TextView
+        android:id="@+id/add_contact"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="33dp"
+        android:gravity="start"
+        android:padding="15dp"
+        android:text="ADD CONTACT"
+        android:textColor="@color/aqua_blue"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/id_split" />
+
+    <ImageButton
+        android:id="@+id/add_contact_button"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_columnWeight="1"
+        android:layout_gravity="fill"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="80dp"
+        android:background="@color/aqua_blue"
+        android:scaleType="fitCenter"
+        android:src="@drawable/plus"
+        android:tag="addContact"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/add_contact"
+        app:layout_constraintTop_toBottomOf="@+id/split_accordingly" />
 </androidx.constraintlayout.widget.ConstraintLayout>
