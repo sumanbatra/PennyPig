@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.example.pennypig.Helpers.DateHelper;
 import com.example.pennypig.SharedPreference.SaveSharedPreference;
 
 import java.text.DateFormat;
@@ -65,7 +66,8 @@ public class Expense extends AppCompatActivity implements ExpenseCallback{
 
                 String URL = "http://18.189.6.243/api/expense/AddExpense";
                 String userId = SaveSharedPreference.getUserId(Expense.this);
-                String time = String.valueOf(new Date());
+                DateHelper dateHelper = new DateHelper();
+                String time = dateHelper.getGMTDate();
 
                 URL += "?user_id=" + userId + "&category_id=" + "-1" + "&payment_method=" + "cash" + "&time=" + time + "&amount=" + value;
 

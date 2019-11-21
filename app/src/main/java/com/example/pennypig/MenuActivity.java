@@ -71,6 +71,9 @@ public class MenuActivity extends AppCompatActivity implements IncomeCallback, E
     public void onResume() {
         super.onResume();
 
+        this.isIncomeReturned = false;
+        this.isExpenseReturned = false;
+
         progressDialog = new ProgressDialog(MenuActivity.this);
         progressDialog.setTitle("Loading");
         progressDialog.setMessage("Wait while loading...");
@@ -105,7 +108,6 @@ public class MenuActivity extends AppCompatActivity implements IncomeCallback, E
         volleyAPIService.volleyPost(URL, params, MenuActivity.this);
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     public void onIncomeSuccess(String result) {
         progressDialog.dismiss();
