@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity implements VolleyCallback{
 
             SaveSharedPreference.setUserId(MainActivity.this, userid);
 
-            Intent intent = new Intent(MainActivity.this, MenuActivity.class);
+            Intent intent = new Intent(MainActivity.this, NavigationDrawer.class);
             startActivity(intent);
         }
         else {
