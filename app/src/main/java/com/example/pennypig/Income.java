@@ -4,6 +4,7 @@ package com.example.pennypig;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -62,7 +63,7 @@ public class Income extends AppCompatActivity implements IncomeCallback{
             }
         });
 
-        buttonIncomeFinal.setOnClickListener(new View.OnClickListener() {
+        buttonIncomeFinal.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -83,6 +84,7 @@ public class Income extends AppCompatActivity implements IncomeCallback{
                 VolleyAPIService volleyAPIService = new VolleyAPIService();
                 volleyAPIService.incomeCallback = Income.this;
                 volleyAPIService.volleyPost(URL, params, Income.this);
+
             }
         });
     }

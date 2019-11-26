@@ -2,6 +2,7 @@ package com.example.pennypig;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -41,6 +42,9 @@ public class Split extends AppCompatActivity implements AdapterView.OnItemSelect
             public void onClick(View v) {
             }
         });
+
+        ImageButton imageButton1 = (ImageButton) findViewById (R.id.add_contact_button);
+
     }
 
     @Override

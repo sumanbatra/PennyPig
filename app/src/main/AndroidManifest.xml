@@ -13,10 +13,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+
         <activity
             android:name=".NavigationDrawer"
             android:label="@string/title_activity_navigation_drawer"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".AddContact"></activity>
+
         <activity android:name=".Split" />
         <activity android:name=".Expense" />
         <activity android:name=".Income" />
