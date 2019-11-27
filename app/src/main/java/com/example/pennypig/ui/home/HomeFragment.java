@@ -1,5 +1,6 @@
 package com.example.pennypig.ui.home;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Build;
@@ -9,25 +10,27 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
-import com.example.pennypig.Expense;
+import com.example.pennypig.ExpenseActivity;
 import com.example.pennypig.ExpenseCallback;
-import com.example.pennypig.Income;
+import com.example.pennypig.IncomeActivity;
 import com.example.pennypig.IncomeCallback;
 import com.example.pennypig.Model.DataVault;
 import com.example.pennypig.R;
 import com.example.pennypig.SharedPreference.SaveSharedPreference;
-import com.example.pennypig.Split;
+import com.example.pennypig.SplitActivity;
 import com.example.pennypig.VolleyAPIService;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 public class HomeFragment extends Fragment implements IncomeCallback, ExpenseCallback {
@@ -38,7 +41,7 @@ public class HomeFragment extends Fragment implements IncomeCallback, ExpenseCal
 
     Button addExpenseButton;
     Button addIncomeButton;
-    Button tempSplit;
+    ImageButton tempSplit;
     TextView incomeTextview;
     TextView expenseTextview;
     TextView totalAmountTextview;
@@ -61,12 +64,12 @@ public class HomeFragment extends Fragment implements IncomeCallback, ExpenseCal
         incomeTextview = (TextView) root.findViewById(R.id.income_textview);
         expenseTextview = (TextView) root.findViewById(R.id.expense_textview);
         totalAmountTextview = (TextView) root.findViewById(R.id.total_amount_textview);
-        tempSplit = (Button) root.findViewById(R.id.temp_split);
+        tempSplit = (ImageButton) root.findViewById(R.id.splitActivity);
 
         addExpenseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), Expense.class);
+                Intent intent = new Intent(getActivity(), ExpenseActivity.class);
                 startActivity(intent);
             }
         });
@@ -74,7 +77,7 @@ public class HomeFragment extends Fragment implements IncomeCallback, ExpenseCal
         addIncomeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), Income.class);
+                Intent intent = new Intent(getActivity(), IncomeActivity.class);
                 startActivity(intent);
             }
         });
@@ -82,7 +85,7 @@ public class HomeFragment extends Fragment implements IncomeCallback, ExpenseCal
         tempSplit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), Split.class);
+                Intent intent = new Intent(getActivity(), SplitActivity.class);
                 startActivity(intent);
             }
         });
@@ -171,10 +174,25 @@ public class HomeFragment extends Fragment implements IncomeCallback, ExpenseCal
         Gson gson = builder.create();
         DataVault.ExpenseDetails[] expenseDetails = gson.fromJson(result, DataVault.ExpenseDetails[].class);
 
+        for(int i = 0; i < expenseDetails.length; i++) {
+            DataVault.Split split[] = gson.fromJson(expenseDetails[i].split, DataVault.Split[].class);
+
+            for(int j = 0; j < split.length; j++) {
+                expenseDetails[i].splitArrayList.add(split[j]);
+            }
+        }
+
         this.expense = 0;
 
         for (int i = 0; i < expenseDetails.length; i++) {
-            expense += Double.parseDouble(expenseDetails[i].amount);
+            Iterator iterator = expenseDetails[i].splitArrayList.iterator();
+            while(iterator.hasNext()) {
+                DataVault.Split split = (DataVault.Split) iterator.next();
+                String email = SaveSharedPreference.getUserEmail(getActivity());
+                if (split.email.equals(email)) {
+                    expense += Double.parseDouble(split.amount);
+                }
+            }
         }
 
         if(this.isIncomeReturned) {
