@@ -70,12 +70,14 @@ public class MainActivity extends AppCompatActivity implements VolleyCallback{
             DataVault.UserDetail userDetail = gson.fromJson(result, DataVault.UserDetail.class);
 
             String userid = String.valueOf(userDetail.getId());
-            String name = String.valueOf(userDetail.getEmail());
-            String email = String.valueOf(userDetail.getName());
+            String name = String.valueOf(userDetail.getName());
+            String email = String.valueOf(userDetail.getEmail());
 
             Log.d(MAIN_ACTIVITY_TAG, String.valueOf(userDetail.getId()));
 
             SaveSharedPreference.setUserId(MainActivity.this, userid);
+            SaveSharedPreference.setUserName(MainActivity.this, name);
+            SaveSharedPreference.setUserEmail(MainActivity.this, email);
 
             Intent intent = new Intent(MainActivity.this, NavigationDrawer.class);
             startActivity(intent);

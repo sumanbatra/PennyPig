@@ -1,5 +1,7 @@
 package com.example.pennypig.Model;
 
+import java.util.ArrayList;
+
 public class DataVault {
     public static class UserDetail {
         public String id = "";
@@ -79,6 +81,36 @@ public class DataVault {
         }
     }
 
+    public static class Split {
+        public String name = "";
+        public String amount = "";
+        public String email = "";
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public String getAmount() {
+            return amount;
+        }
+
+        public void setAmount(String amount) {
+            this.amount = amount;
+        }
+
+        public String getEmail() {
+            return email;
+        }
+
+        public void setEmail(String email) {
+            this.email = email;
+        }
+    }
+
     public static class ExpenseDetails {
         public String id = "";
         public String user_id = "";
@@ -86,6 +118,11 @@ public class DataVault {
         public String payment_method = "";
         public String time = "";
         public String amount = "";
+        public String split = "";
+        public String location = "";
+        public String description = "";
+        public String split_type = "";
+        public ArrayList<Split> splitArrayList = new ArrayList<Split>();
 
         public String getId() {
             return id;
@@ -133,6 +170,38 @@ public class DataVault {
 
         public void setAmount(String amount) {
             this.amount = amount;
+        }
+
+        public String getSplit() {
+            return split;
+        }
+
+        public void setSplit(String split) {
+            this.split = split;
+        }
+
+        public String getLocation() {
+            return location;
+        }
+
+        public void setLocation(String location) {
+            this.location = location;
+        }
+
+        public String getDescription() {
+            return description;
+        }
+
+        public void setDescription(String description) {
+            this.description = description;
+        }
+
+        public String getSplit_type() {
+            return split_type;
+        }
+
+        public void setSplit_type(String split_type) {
+            this.split_type = split_type;
         }
     }
 }
