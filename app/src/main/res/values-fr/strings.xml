@@ -43,4 +43,8 @@
     <string name="menu_send">Send</string>
 
     <string name="passbook">Passbook</string>
+    <string name="dialog_message">Do you want to add income?</string>
+    <string name="dialog_title">Alert</string>
+    <string name="ok">Ok</string>
+    <string name="Cancel">Cancel</string>
 </resources>
