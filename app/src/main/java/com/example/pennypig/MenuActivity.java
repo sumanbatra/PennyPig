@@ -1,11 +1,9 @@
 package com.example.pennypig;
 
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -27,7 +25,6 @@ public class MenuActivity extends AppCompatActivity implements IncomeCallback, E
 
     Button addExpenseButton;
     Button addIncomeButton;
-    Button tempSplit;
     TextView incomeTextview;
     TextView expenseTextview;
     TextView totalAmountTextview;
@@ -50,12 +47,11 @@ public class MenuActivity extends AppCompatActivity implements IncomeCallback, E
         incomeTextview = (TextView) findViewById(R.id.income_textview);
         expenseTextview = (TextView) findViewById(R.id.expense_textview);
         totalAmountTextview = (TextView) findViewById(R.id.total_amount_textview);
-        tempSplit = (Button) findViewById(R.id.temp_split);
 
         addExpenseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MenuActivity.this, Expense.class);
+                Intent intent = new Intent(MenuActivity.this, ExpenseActivity.class);
                 startActivity(intent);
             }
         });
@@ -63,15 +59,7 @@ public class MenuActivity extends AppCompatActivity implements IncomeCallback, E
         addIncomeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MenuActivity.this, Income.class);
-                startActivity(intent);
-            }
-        });
-
-        tempSplit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MenuActivity.this, Split.class);
+                Intent intent = new Intent(MenuActivity.this, IncomeActivity.class);
                 startActivity(intent);
             }
         });

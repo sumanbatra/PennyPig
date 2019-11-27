@@ -1,60 +1,65 @@
-
 package com.example.pennypig;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.pennypig.Helpers.DateHelper;
+import com.example.pennypig.Model.DataVault;
 import com.example.pennypig.SharedPreference.SaveSharedPreference;
+import com.google.gson.Gson;
 
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Income extends AppCompatActivity implements IncomeCallback{
+public class ExpenseActivity extends AppCompatActivity implements ExpenseCallback{
 
-    private static final String TAG = "Income";
+    private static final String TAG = "ExpenseActivity";
+
     TextView valueText;
-    Button buttonIncomeFinal;
     String value = "";
     double initialValue=0;
     int equalCheck =0;
     ProgressDialog progressDialog;
-    boolean checkDot=false;
+    Button buttonExpenseFinal;
+    RadioGroup radioGroup;
+    String paymentMethod;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_income);
+        setContentView(R.layout.activity_expense);
 
-        progressDialog = new ProgressDialog(Income.this);
-        progressDialog.setTitle("Loading");
-        progressDialog.setMessage("Wait while loading...");
-        progressDialog.setCancelable(false);
+        buttonExpenseFinal = (Button) findViewById(R.id.buttonExpenseFinal);
+        valueText = findViewById(R.id.valueText);
+        radioGroup = findViewById(R.id.radio_group);
+
+        radioGroup.clearCheck();
 
         Calendar calendar = Calendar.getInstance();
         String currentDate = DateFormat.getDateInstance(DateFormat.FULL).format(calendar.getTime());
 
         TextView textViewDate = findViewById(R.id.dateTextView);
         textViewDate.setText(currentDate);
-        buttonIncomeFinal = (Button) findViewById(R.id.buttonIncomeFinal);
 
-        valueText = findViewById(R.id.valueText);
+        progressDialog = new ProgressDialog(ExpenseActivity.this);
+        progressDialog.setTitle("Loading");
+        progressDialog.setMessage("Wait while loading...");
+        progressDialog.setCancelable(false);
 
-        ImageButton eraseIncomeButton = findViewById(R.id.eraseIncomeButton);
-        eraseIncomeButton.setOnLongClickListener(new View.OnLongClickListener() {
+        ImageButton eraseButton = findViewById(R.id.eraseExpenseButton);
+        eraseButton.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
                 value = "";
@@ -63,18 +68,44 @@ public class Income extends AppCompatActivity implements IncomeCallback{
             }
         });
 
-        buttonIncomeFinal.setOnClickListener( new View.OnClickListener() {
+        buttonExpenseFinal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 progressDialog.show();
 
-                String URL = "http://18.189.6.243/api/income/AddIncome";
-                String userId = SaveSharedPreference.getUserId(Income.this);
+                String URL = "http://18.189.6.243/api/expense/AddExpense";
+                String userId = SaveSharedPreference.getUserId(ExpenseActivity.this);
                 DateHelper dateHelper = new DateHelper();
                 String time = dateHelper.getGMTDate();
 
-                URL += "?user_id=" + userId + "&time=" + time + "&amount=" + value;
+                if(paymentMethod.isEmpty()) {
+                    paymentMethod = "Cash";
+                }
+
+                ArrayList<DataVault.Split> splitArrayList = new ArrayList<DataVault.Split>();
+                DataVault.Split split = new DataVault.Split();
+                split.name = SaveSharedPreference.getUserName(ExpenseActivity.this);
+                split.email = SaveSharedPreference.getUserEmail(ExpenseActivity.this);
+                split.amount = value;
+
+                splitArrayList.add(split);
+
+                Gson gson = new Gson();
+                String splitJson = gson.toJson(splitArrayList.toArray());
+
+                String description = "Food";
+                String location = "Waterloo";
+                String splitType = "unequal";
+
+                URL += "?user_id=" + userId +
+                        "&category_id=" + "-1" +
+                        "&payment_method=" + paymentMethod +
+                        "&time=" + time +
+                        "&amount=" + value +
+                        "&split=" + splitJson +
+                        "&description=" + description +
+                        "&split_type=" + splitType +
+                        "&location=" + location;
 
                 final Map<String, String> params = new HashMap<String, String>();
                 params.put("user_id", userId);
@@ -82,95 +113,96 @@ public class Income extends AppCompatActivity implements IncomeCallback{
                 params.put("amount", value);
 
                 VolleyAPIService volleyAPIService = new VolleyAPIService();
-                volleyAPIService.incomeCallback = Income.this;
-                volleyAPIService.volleyPost(URL, params, Income.this);
+                volleyAPIService.expenseCallback = ExpenseActivity.this;
+                volleyAPIService.volleyPost(URL, params, ExpenseActivity.this);
+            }
+        });
 
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                int checkedButton = checkedId;
+                RadioButton radioButton = (RadioButton)group.findViewById(checkedId);
+                paymentMethod = String.valueOf(radioButton.getText());
+                Log.i(TAG, "onCheckedChanged: ");
             }
         });
     }
 
     public void setValue(View view){
         String tag = String.valueOf(view.getTag());
-        if(tag.equals("buttonIncomeOne")){
+        if(tag.equals("buttonExpenseOne")){
             Log.i(TAG, "setValue: buttonOne");
             value +="1";
         }
-        else if(tag.equals("buttonIncomeTwo")){
+        else if(tag.equals("buttonExpenseTwo")){
             Log.i(TAG, "setValue: buttonTwo");
             value +="2";
         }
-        else if(tag.equals("buttonIncomeThree")){
+        else if(tag.equals("buttonExpenseThree")){
             Log.i(TAG, "setValue: buttonThree");
             value +="3";
         }
-        else if(tag.equals("buttonIncomeFour")){
+        else if(tag.equals("buttonExpenseFour")){
             Log.i(TAG, "setValue: buttonFour");
             value +="4";
         }
-        else if(tag.equals("buttonIncomeFive")){
+        else if(tag.equals("buttonExpenseFive")){
             Log.i(TAG, "setValue: buttonFive");
             value +="5";
         }
-        else if(tag.equals("buttonIncomeSix")){
+        else if(tag.equals("buttonExpenseSix")){
             Log.i(TAG, "setValue: buttonSix");
             value +="6";
         }
-        else if(tag.equals("buttonIncomeSeven")){
+        else if(tag.equals("buttonExpenseSeven")){
             Log.i(TAG, "setValue: buttonSeven");
             value +="7";
         }
-        else if(tag.equals("buttonIncomeEight")){
+        else if(tag.equals("buttonExpenseEight")){
             Log.i(TAG, "setValue: buttonEight");
             value +="8";
         }
-        else if(tag.equals("buttonIncomeNine")){
+        else if(tag.equals("buttonExpenseNine")){
             Log.i(TAG, "setValue: buttonNine");
             value +="9";
         }
-        else if(tag.equals("buttonIncomeZero")){
+        else if(tag.equals("buttonExpenseZero")){
             Log.i(TAG, "setValue: buttonZero");
             value +="0";
         }
-        else if(tag.equals("buttonIncomeDot") && checkDot == false){
+        else if(tag.equals("buttonExpenseDot")){
             Log.i(TAG, "setValue: buttonDot");
             value +=".";
-            checkDot = true;
         }
-        else if(tag.equals("eraseIncomeButton") && value.length()>0){
+        else if(tag.equals("eraseButton") && value.length()>0){
             Log.i(TAG, "setValue: Erase Button");
             value = value.substring(0, value.length()-1);
-            if(value.contains(".")){
-                checkDot = true;
-            }
-            else {
-                checkDot = false;
-            }
             if (value.equals("ERRO")){
                 value = "";
             }
-
         }
-        else if(tag.equals("buttonIncomePlus")){
+        else if(tag.equals("buttonExpensePlus")){
             initialValue = Double.parseDouble(value);
             equalCheck = 1;
             value = "";
         }
-        else if(tag.equals("buttonIncomeMinus")){
+        else if(tag.equals("buttonExpenseMinus")){
             initialValue = Double.parseDouble(value);
             equalCheck = 2;
             value = "";
         }
-        else if(tag.equals("buttonIncomeMultiplication")){
+        else if(tag.equals("buttonExpenseMultiplication")){
             initialValue = Double.parseDouble(value);
             equalCheck = 3;
             value = "";
         }
-        else if(tag.equals("buttonIncomeDivision")){
+        else if(tag.equals("buttonExpenseDivision")){
             initialValue = Double.parseDouble(value);
             equalCheck = 4;
             value = "";
         }
-        else if(tag.equals("buttonIncomeEquals")){
+        else if(tag.equals("buttonExpenseEquals")){
             if(equalCheck == 1) {
                 initialValue += Double.parseDouble(value);
                 value = String.valueOf(initialValue);
@@ -199,7 +231,7 @@ public class Income extends AppCompatActivity implements IncomeCallback{
     }
 
     @Override
-    public void onIncomeSuccess(String result) {
+    public void onExpenseSuccess(String result) {
         Log.i(TAG, "onSuccess: " + result);
 
         valueText.setText("");
