@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.ContactsContract;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -15,6 +17,7 @@ import android.widget.Toast;
 
 public class SplitActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
+    protected final String ACTIVITY_NAME = "SplitActivity";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,13 +40,14 @@ public class SplitActivity extends AppCompatActivity implements AdapterView.OnIt
         split_spinner.setOnItemSelectedListener(this);
 
         ImageButton imageButton = findViewById(R.id.add_contact_button);
+
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(SplitActivity.this , AddContact.class);
+                startActivity(intent);
             }
         });
-
-        ImageButton imageButton1 = (ImageButton) findViewById (R.id.add_contact_button);
 
     }
 
