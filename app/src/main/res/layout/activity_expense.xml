@@ -326,20 +326,33 @@
             android:textSize="25sp" />
     </GridLayout>
 
-    <Button
-        android:id="@+id/buttonExpenseCategory"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:background="@drawable/try1"
-        android:tag="buttonExpenseCategory"
-        android:text="SELECT CATEGORY"
-        android:textColor="@color/aqua_blue"
-        android:textSize="25sp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline24"
-        app:layout_constraintEnd_toStartOf="@+id/guideline14"
+
+    <TextView
+        android:id="@+id/category_textView"
+        android:layout_width="77dp"
+        android:layout_height="21dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="52dp"
+        android:layout_marginEnd="341dp"
+        android:text="CATEGORY"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/guideline13"
-        app:layout_constraintTop_toTopOf="@+id/guideline23" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gridLayout" />
+
+    <Spinner
+        android:id="@+id/category_array"
+        android:layout_width="284dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="52dp"
+        android:layout_marginEnd="18dp"
+        android:padding="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.75"
+        app:layout_constraintStart_toEndOf="@+id/category_textView"
+        app:layout_constraintTop_toBottomOf="@+id/gridLayout" />
 
     <Button
         android:id="@+id/buttonExpenseFinal"
@@ -493,5 +506,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.99" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

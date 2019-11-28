@@ -3,14 +3,19 @@ package com.example.pennypig;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.pennypig.Helpers.DateHelper;
 import com.example.pennypig.Model.DataVault;
@@ -23,7 +28,7 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ExpenseActivity extends AppCompatActivity implements ExpenseCallback{
+public class ExpenseActivity extends AppCompatActivity implements ExpenseCallback,AdapterView.OnItemSelectedListener{
 
     private static final String TAG = "ExpenseActivity";
 
@@ -35,6 +40,9 @@ public class ExpenseActivity extends AppCompatActivity implements ExpenseCallbac
     Button buttonExpenseFinal;
     RadioGroup radioGroup;
     String paymentMethod;
+    Spinner cateo_spinner;
+    String category_name;
+    int intent_category_number = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +52,8 @@ public class ExpenseActivity extends AppCompatActivity implements ExpenseCallbac
         buttonExpenseFinal = (Button) findViewById(R.id.buttonExpenseFinal);
         valueText = findViewById(R.id.valueText);
         radioGroup = findViewById(R.id.radio_group);
+        cateo_spinner = (Spinner) findViewById(R.id.category_array);
+
 
         radioGroup.clearCheck();
 
@@ -57,6 +67,18 @@ public class ExpenseActivity extends AppCompatActivity implements ExpenseCallbac
         progressDialog.setTitle("Loading");
         progressDialog.setMessage("Wait while loading...");
         progressDialog.setCancelable(false);
+
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.categories, R.layout.support_simple_spinner_dropdown_item);
+        adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+        cateo_spinner.setAdapter(adapter);
+        cateo_spinner.setOnItemSelectedListener(this);
+        Intent iin= getIntent();
+        Bundle b = iin.getExtras();
+        if(b!=null)
+        {
+            intent_category_number =(int) b.get("intent_category_number");
+        }
+        cateo_spinner.setSelection(intent_category_number);
 
         ImageButton eraseButton = findViewById(R.id.eraseExpenseButton);
         eraseButton.setOnLongClickListener(new View.OnLongClickListener() {
@@ -96,9 +118,10 @@ public class ExpenseActivity extends AppCompatActivity implements ExpenseCallbac
                 String description = "Food";
                 String location = "Waterloo";
                 String splitType = "unequal";
+                String category = cateo_spinner.getSelectedItem().toString();
 
                 URL += "?user_id=" + userId +
-                        "&category_id=" + "Others" +
+                        "&category_id=" + category +
                         "&payment_method=" + paymentMethod +
                         "&time=" + time +
                         "&amount=" + value +
@@ -115,6 +138,7 @@ public class ExpenseActivity extends AppCompatActivity implements ExpenseCallbac
                 VolleyAPIService volleyAPIService = new VolleyAPIService();
                 volleyAPIService.expenseCallback = ExpenseActivity.this;
                 volleyAPIService.volleyPost(URL, params, ExpenseActivity.this);
+
             }
         });
 
@@ -237,5 +261,15 @@ public class ExpenseActivity extends AppCompatActivity implements ExpenseCallbac
         valueText.setText("");
 
         progressDialog.dismiss();
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+        category_name = adapterView.getItemAtPosition(i).toString();
+//        Toast.makeText(adapterView.getContext(), text, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
     }
 }

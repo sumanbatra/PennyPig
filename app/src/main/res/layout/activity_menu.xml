@@ -15,7 +15,8 @@
         android:rowCount="2">
 
         <ImageButton
-            android:id="@+id/imageButton6"
+            android:id="@+id/ExpenseMedicine"
+            android:tag="ExpenseMedicine"
             android:layout_width="0dp"
             android:layout_height="100dp"
             android:layout_row="0"
@@ -25,7 +26,8 @@
             app:srcCompat="@drawable/medicine" />
 
         <ImageButton
-            android:id="@+id/imageButton7"
+            android:id="@+id/ExpenseTravel"
+            android:tag="ExpenseTravel"
             android:layout_width="0dp"
             android:layout_height="100dp"
             android:layout_row="0"
@@ -35,7 +37,8 @@
             app:srcCompat="@drawable/travel" />
 
         <ImageButton
-            android:id="@+id/imageButton8"
+            android:id="@+id/ExpenseEntertainment"
+            android:tag="ExpenseEntertainment"
             android:layout_width="0dp"
             android:layout_height="100dp"
             android:layout_row="0"
@@ -45,7 +48,8 @@
             app:srcCompat="@drawable/entertainment" />
 
         <ImageButton
-            android:id="@+id/imageButton9"
+            android:id="@+id/ExpenseBills"
+            android:tag="ExpenseBills"
             android:layout_width="0dp"
             android:layout_height="100dp"
             android:layout_row="1"
@@ -56,7 +60,8 @@
 
 
         <ImageButton
-            android:id="@+id/imageButton10"
+            android:id="@+id/ExpenseRent"
+            android:tag="ExpenseRent"
             android:layout_width="0dp"
             android:layout_height="100dp"
             android:layout_row="1"
@@ -66,14 +71,15 @@
             app:srcCompat="@drawable/rent" />
 
         <ImageButton
-            android:id="@+id/imageButton11"
+            android:id="@+id/ExpenseGrocery"
+            android:tag="ExpenseGrocery"
             android:layout_width="0dp"
             android:layout_height="100dp"
             android:layout_row="1"
             android:layout_column="2"
             android:layout_columnWeight="1"
             android:scaleType="fitCenter"
-            app:srcCompat="@drawable/others" />
+            app:srcCompat="@drawable/grocery" />
     </GridLayout>
 
     <GridLayout
@@ -83,9 +89,9 @@
         android:layout_below="@id/categoryGridLayout"
         android:layout_marginTop="15dp"
         android:background="@drawable/try2"
-        android:paddingVertical="30dp"
         android:columnCount="2"
         android:padding="5dp"
+        android:paddingVertical="30dp"
         android:rowCount="1">
 
         <TextView
@@ -115,12 +121,12 @@
         android:id="@+id/total_amount_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="50dp"
         android:layout_below="@id/gridDisplay"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="15dp"
         android:background="@drawable/try2"
         android:gravity="center"
+        android:padding="50dp"
         android:text="@string/total_balance"
         android:textColor="@android:color/black"
         android:textSize="15pt"
@@ -129,10 +135,10 @@
     <GridLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:layout_below="@id/total_amount_textview"
-        android:columnCount="3"
         android:layout_alignParentBottom="true"
+        android:layout_marginTop="20dp"
+        android:columnCount="3"
         android:orientation="horizontal"
         android:rowCount="1">
 

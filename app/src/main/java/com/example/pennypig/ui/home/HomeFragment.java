@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -21,6 +22,7 @@ import com.example.pennypig.ExpenseActivity;
 import com.example.pennypig.ExpenseCallback;
 import com.example.pennypig.IncomeActivity;
 import com.example.pennypig.IncomeCallback;
+import com.example.pennypig.MenuActivity;
 import com.example.pennypig.Model.DataVault;
 import com.example.pennypig.R;
 import com.example.pennypig.SharedPreference.SaveSharedPreference;
@@ -45,6 +47,8 @@ public class HomeFragment extends Fragment implements IncomeCallback, ExpenseCal
     TextView incomeTextview;
     TextView expenseTextview;
     TextView totalAmountTextview;
+    int intent_category_number;
+    ImageButton medicine,travel,entertainment,rent,grocery,bills;
 
     ProgressDialog progressDialog;
 
@@ -65,6 +69,73 @@ public class HomeFragment extends Fragment implements IncomeCallback, ExpenseCal
         expenseTextview = (TextView) root.findViewById(R.id.expense_textview);
         totalAmountTextview = (TextView) root.findViewById(R.id.total_amount_textview);
         tempSplit = (ImageButton) root.findViewById(R.id.splitActivity);
+
+        medicine = root.findViewById(R.id.ExpenseMedicine);
+        grocery = root.findViewById(R.id.ExpenseGrocery);
+        bills = root.findViewById(R.id.ExpenseBills);
+        travel = root.findViewById(R.id.ExpenseTravel);
+        rent = root.findViewById(R.id.ExpenseRent);
+        entertainment = root.findViewById(R.id.ExpenseEntertainment);
+
+        medicine.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                intent_category_number =0;
+                Intent intent = new Intent(getActivity(),ExpenseActivity.class);
+                intent.putExtra("intent_category_number", intent_category_number);
+                startActivity(intent);
+            }
+        });
+
+        grocery.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                intent_category_number =1;
+                Intent intent = new Intent(getActivity(),ExpenseActivity.class);
+                intent.putExtra("intent_category_number", intent_category_number);
+                startActivity(intent);
+            }
+        });
+
+        bills.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                intent_category_number =2;
+                Intent intent = new Intent(getActivity(),ExpenseActivity.class);
+                intent.putExtra("intent_category_number", intent_category_number);
+                startActivity(intent);
+            }
+        });
+
+        travel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                intent_category_number =3;
+                Intent intent = new Intent(getActivity(),ExpenseActivity.class);
+                intent.putExtra("intent_category_number", intent_category_number);
+                startActivity(intent);
+            }
+        });
+
+        rent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                intent_category_number =4;
+                Intent intent = new Intent(getActivity(),ExpenseActivity.class);
+                intent.putExtra("intent_category_number", intent_category_number);
+                startActivity(intent);
+            }
+        });
+
+        entertainment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                intent_category_number =5;
+                Intent intent = new Intent(getActivity(),ExpenseActivity.class);
+                intent.putExtra("intent_category_number", intent_category_number);
+                startActivity(intent);
+            }
+        });
 
         addExpenseButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -214,5 +285,4 @@ public class HomeFragment extends Fragment implements IncomeCallback, ExpenseCal
         Log.i(TAG, "onSuccess: ");
         this.isExpenseReturned = true;
     }
-
 }

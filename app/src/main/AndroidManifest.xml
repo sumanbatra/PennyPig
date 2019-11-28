@@ -15,12 +15,12 @@
         android:usesCleartextTraffic="true">
 
         <activity android:name=".SignUpActivity"></activity>
+        <activity android:name=".AddContact"></activity>
         <activity
             android:name=".NavigationDrawer"
             android:label="@string/title_activity_navigation_drawer"
             android:theme="@style/AppTheme.NoActionBar" />
 
-        <activity android:name=".AddContact"></activity>
         <activity android:name=".SplitActivity" />
         <activity android:name=".ExpenseActivity" />
         <activity android:name=".IncomeActivity" />

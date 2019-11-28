@@ -43,6 +43,7 @@ public class PassbookFragment extends Fragment implements IncomeCallback, Expens
     ArrayList<PassbookAdapterItem> passbookAdapterItemArrayList;
     PassbookAdapter passbookAdapter;
     View rootView;
+    String userEmail;
 
     ProgressDialog progressDialog;
 
@@ -57,6 +58,8 @@ public class PassbookFragment extends Fragment implements IncomeCallback, Expens
         passbookViewModel = ViewModelProviders.of(this).get(PassbookViewModel.class);
         View root = inflater.inflate(R.layout.fragment_passbook, container, false);
         rootView = root;
+
+        userEmail = SaveSharedPreference.getUserEmail(getActivity());
 
         recyclerView = (RecyclerView) root.findViewById(R.id.passbook_recycler);
         passbookAdapterItemMap = new HashMap<Date, PassbookAdapterItem>();
@@ -148,7 +151,14 @@ public class PassbookFragment extends Fragment implements IncomeCallback, Expens
         this.expense = 0;
 
         for (int i = 0; i < expenseDetails.length; i++) {
-            expense += Double.parseDouble(expenseDetails[i].amount);
+            DataVault.Split[] splitArray = gson.fromJson(expenseDetails[i].split, DataVault.Split[].class);
+            for(int j = 0; j < splitArray.length; j++) {
+                expenseDetails[i].splitArrayList.add(splitArray[j]);
+                if(splitArray[j].email.equals(userEmail)) {
+                    expense += Double.parseDouble(splitArray[j].amount);
+                    expenseDetails[i].amount = splitArray[j].amount;
+                }
+            }
             Date expenseDate = DateHelper.GMTtoLocalTime(expenseDetails[i].time);
             PassbookAdapterItem passbookAdapterItem = new PassbookAdapterItem(expenseDetails[i].amount, expenseDetails[i].time, "Red", expenseDate, expenseDetails[i].category_id, expenseDetails[i].payment_method);
             passbookAdapterItemMap.put(expenseDate, passbookAdapterItem);
