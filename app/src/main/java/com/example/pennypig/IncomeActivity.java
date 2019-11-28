@@ -67,8 +67,10 @@ public class IncomeActivity extends AppCompatActivity implements IncomeCallback 
             @Override
             public void onClick(View v) {
 
+
                 AlertDialog.Builder builder = new AlertDialog.Builder(IncomeActivity.this, AlertDialog.THEME_DEVICE_DEFAULT_DARK);
                 builder.setMessage(R.string.dialog_message).setTitle(R.string.dialog_title);
+
 
                 builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                     @Override
@@ -139,7 +141,7 @@ public class IncomeActivity extends AppCompatActivity implements IncomeCallback 
         } else if (tag.equals("buttonIncomeNine")) {
             Log.i(TAG, "setValue: buttonNine");
             value += "9";
-        } else if (tag.equals("buttonIncomeZero")) {
+        } else if (tag.equals("buttonIncomeZero")&& value.length() > 0) {
             Log.i(TAG, "setValue: buttonZero");
             value += "0";
         } else if (tag.equals("buttonIncomeDot") && checkDot == false) {
@@ -194,7 +196,7 @@ public class IncomeActivity extends AppCompatActivity implements IncomeCallback 
             }
             initialValue = 0;
         }
-        valueText.setText(value);
+         valueText.setText(value);
 
     }
 
