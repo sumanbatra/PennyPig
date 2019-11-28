@@ -65,5 +65,8 @@
     <string name="passbook">Passbook</string>
     <string name="name">Enter Full Name</string>
     <string name="signupname">Full Name</string>
-
+    <string name="dialog_message">Do you want to add income?</string>
+    <string name="dialog_title"> Alert </string>
+    <string name="ok">OK</string>
+    <string name="Cancel">Cancel</string>
 </resources>

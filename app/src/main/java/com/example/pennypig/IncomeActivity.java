@@ -2,8 +2,12 @@
 package com.example.pennypig;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -19,16 +23,16 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
-public class IncomeActivity extends AppCompatActivity implements IncomeCallback{
+public class IncomeActivity extends AppCompatActivity implements IncomeCallback {
 
     private static final String TAG = "IncomeActivity";
     TextView valueText;
     Button buttonIncomeFinal;
     String value = "";
-    double initialValue=0;
-    int equalCheck =0;
+    double initialValue = 0;
+    int equalCheck = 0;
     ProgressDialog progressDialog;
-    boolean checkDot=false;
+    boolean checkDot = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,133 +67,136 @@ public class IncomeActivity extends AppCompatActivity implements IncomeCallback{
             @Override
             public void onClick(View v) {
 
-                progressDialog.show();
 
-                String URL = "http://18.189.6.243/api/income/AddIncome";
-                String userId = SaveSharedPreference.getUserId(IncomeActivity.this);
-                DateHelper dateHelper = new DateHelper();
-                String time = dateHelper.getGMTDate();
+                AlertDialog.Builder builder = new AlertDialog.Builder(IncomeActivity.this, AlertDialog.THEME_DEVICE_DEFAULT_DARK);
+                builder.setMessage(R.string.dialog_message).setTitle(R.string.dialog_title);
 
-                URL += "?user_id=" + userId + "&time=" + time + "&amount=" + value;
 
-                final Map<String, String> params = new HashMap<String, String>();
-                params.put("user_id", userId);
-                params.put("time", time);
-                params.put("amount", value);
+                builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        addIncomeToDB();
+                        finish();
+                    }
+                });
+                builder.setNegativeButton(R.string.Cancel, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
 
-                VolleyAPIService volleyAPIService = new VolleyAPIService();
-                volleyAPIService.incomeCallback = IncomeActivity.this;
-                volleyAPIService.volleyPost(URL, params, IncomeActivity.this);
+                    }
+                });
+                AlertDialog dialog = builder.create();
+                dialog.show();
             }
         });
+
     }
 
-    public void setValue(View view){
+    public void addIncomeToDB() {
+        progressDialog.show();
+
+        String URL = "http://18.189.6.243/api/income/AddIncome";
+        String userId = SaveSharedPreference.getUserId(IncomeActivity.this);
+        DateHelper dateHelper = new DateHelper();
+        String time = dateHelper.getGMTDate();
+
+        URL += "?user_id=" + userId + "&time=" + time + "&amount=" + value;
+
+        final Map<String, String> params = new HashMap<String, String>();
+        params.put("user_id", userId);
+        params.put("time", time);
+        params.put("amount", value);
+
+        VolleyAPIService volleyAPIService = new VolleyAPIService();
+        volleyAPIService.incomeCallback = IncomeActivity.this;
+        volleyAPIService.volleyPost(URL, params, IncomeActivity.this);
+    }
+
+    public void setValue(View view) {
         String tag = String.valueOf(view.getTag());
-        if(tag.equals("buttonIncomeOne")){
+        if (tag.equals("buttonIncomeOne")) {
             Log.i(TAG, "setValue: buttonOne");
-            value +="1";
-        }
-        else if(tag.equals("buttonIncomeTwo")){
+            value += "1";
+        } else if (tag.equals("buttonIncomeTwo")) {
             Log.i(TAG, "setValue: buttonTwo");
-            value +="2";
-        }
-        else if(tag.equals("buttonIncomeThree")){
+            value += "2";
+        } else if (tag.equals("buttonIncomeThree")) {
             Log.i(TAG, "setValue: buttonThree");
-            value +="3";
-        }
-        else if(tag.equals("buttonIncomeFour")){
+            value += "3";
+        } else if (tag.equals("buttonIncomeFour")) {
             Log.i(TAG, "setValue: buttonFour");
-            value +="4";
-        }
-        else if(tag.equals("buttonIncomeFive")){
+            value += "4";
+        } else if (tag.equals("buttonIncomeFive")) {
             Log.i(TAG, "setValue: buttonFive");
-            value +="5";
-        }
-        else if(tag.equals("buttonIncomeSix")){
+            value += "5";
+        } else if (tag.equals("buttonIncomeSix")) {
             Log.i(TAG, "setValue: buttonSix");
-            value +="6";
-        }
-        else if(tag.equals("buttonIncomeSeven")){
+            value += "6";
+        } else if (tag.equals("buttonIncomeSeven")) {
             Log.i(TAG, "setValue: buttonSeven");
-            value +="7";
-        }
-        else if(tag.equals("buttonIncomeEight")){
+            value += "7";
+        } else if (tag.equals("buttonIncomeEight")) {
             Log.i(TAG, "setValue: buttonEight");
-            value +="8";
-        }
-        else if(tag.equals("buttonIncomeNine")){
+            value += "8";
+        } else if (tag.equals("buttonIncomeNine")) {
             Log.i(TAG, "setValue: buttonNine");
-            value +="9";
-        }
-        else if(tag.equals("buttonIncomeZero")){
+            value += "9";
+        } else if (tag.equals("buttonIncomeZero")&& value.length() > 0) {
             Log.i(TAG, "setValue: buttonZero");
-            value +="0";
-        }
-        else if(tag.equals("buttonIncomeDot") && checkDot == false){
+            value += "0";
+        } else if (tag.equals("buttonIncomeDot") && checkDot == false) {
             Log.i(TAG, "setValue: buttonDot");
-            value +=".";
+            value += ".";
             checkDot = true;
-        }
-        else if(tag.equals("eraseIncomeButton") && value.length()>0){
+        } else if (tag.equals("eraseIncomeButton") && value.length() > 0) {
             Log.i(TAG, "setValue: Erase Button");
-            value = value.substring(0, value.length()-1);
-            if(value.contains(".")){
+            value = value.substring(0, value.length() - 1);
+            if (value.contains(".")) {
                 checkDot = true;
-            }
-            else {
+            } else {
                 checkDot = false;
             }
-            if (value.equals("ERRO")){
+            if (value.equals("ERRO")) {
                 value = "";
             }
 
-        }
-        else if(tag.equals("buttonIncomePlus")){
+        } else if (tag.equals("buttonIncomePlus")) {
             initialValue = Double.parseDouble(value);
             equalCheck = 1;
             value = "";
-        }
-        else if(tag.equals("buttonIncomeMinus")){
+        } else if (tag.equals("buttonIncomeMinus")) {
             initialValue = Double.parseDouble(value);
             equalCheck = 2;
             value = "";
-        }
-        else if(tag.equals("buttonIncomeMultiplication")){
+        } else if (tag.equals("buttonIncomeMultiplication")) {
             initialValue = Double.parseDouble(value);
             equalCheck = 3;
             value = "";
-        }
-        else if(tag.equals("buttonIncomeDivision")){
+        } else if (tag.equals("buttonIncomeDivision")) {
             initialValue = Double.parseDouble(value);
             equalCheck = 4;
             value = "";
-        }
-        else if(tag.equals("buttonIncomeEquals")){
-            if(equalCheck == 1) {
+        } else if (tag.equals("buttonIncomeEquals")) {
+            if (equalCheck == 1) {
                 initialValue += Double.parseDouble(value);
                 value = String.valueOf(initialValue);
-            }
-            else if(equalCheck == 2) {
+            } else if (equalCheck == 2) {
                 initialValue -= Double.parseDouble(value);
                 value = String.valueOf(initialValue);
-            }
-            else if(equalCheck == 3) {
+            } else if (equalCheck == 3) {
                 initialValue *= Double.parseDouble(value);
                 value = String.valueOf(initialValue);
-            }
-            else if(equalCheck == 4) {
-                if(value.equals("0")){
+            } else if (equalCheck == 4) {
+                if (value.equals("0")) {
                     value = "ERROR";
-                }
-                else {
+                } else {
                     initialValue /= Double.parseDouble(value);
                     value = String.valueOf(initialValue);
                 }
             }
-            initialValue=0;
+            initialValue = 0;
         }
-        valueText.setText(value);
+         valueText.setText(value);
 
     }
 
