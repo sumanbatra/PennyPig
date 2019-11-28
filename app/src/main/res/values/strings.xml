@@ -4,7 +4,11 @@
     <string name="password">Password</string>
     <string name="login">Login</string>
     <string name="no_account_yet_create_one">No account yet? Create One</string>
-
+    <string name="signupemail">SignupEmail</string>
+    <string name="signuppassword">Password</string>
+    <string name="signup">SIGN UP</string>
+    <string name="signup_repassword"> Retype Password</string>
+    <string name="signuprepassword">Confirm Password</string>
     <string-array name="categories">
         <item>Medicines</item>
         <item>Transport</item>
@@ -56,6 +60,10 @@
     <string name="menu_tools">Tools</string>
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
+    <string name="logout">Logout</string>
 
     <string name="passbook">Passbook</string>
+    <string name="name">Enter Full Name</string>
+    <string name="signupname">Full Name</string>
+
 </resources>

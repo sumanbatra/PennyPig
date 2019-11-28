@@ -23,6 +23,7 @@ public class VolleyAPIService extends Service {
     public VolleyCallback callback = null;
     public IncomeCallback incomeCallback = null;
     public ExpenseCallback expenseCallback = null;
+    public SignUpCallback signUpCallback = null;
 
     public VolleyAPIService() {
     }
@@ -49,6 +50,9 @@ public class VolleyAPIService extends Service {
                         }
                         else if(expenseCallback != null) {
                             expenseCallback.onExpenseSuccess(response);
+                        }
+                        else if(signUpCallback != null) {
+                            signUpCallback.onSignupSuccess(response);
                         }
                     }
                 },

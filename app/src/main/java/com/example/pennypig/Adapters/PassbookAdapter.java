@@ -42,6 +42,9 @@ public class PassbookAdapter extends RecyclerView.Adapter<PassbookAdapter.ViewHo
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int listPosition) {
         TextView amount = holder.amount;
+        TextView timeStamp = holder.timeStamp;
+        TextView category = holder.category;
+        TextView bankOrCash = holder.bankORCash;
 
         PassbookAdapterItem p = passbookAdapterItemArrayList.get(listPosition);
         if(p.getColour() == "Green") {
@@ -52,6 +55,9 @@ public class PassbookAdapter extends RecyclerView.Adapter<PassbookAdapter.ViewHo
         }
         String amountString = "$ " + p.getAmount();
         amount.setText(amountString);
+        timeStamp.setText(p.getTimeStamp());
+        category.setText(p.getCategory());
+        bankOrCash.setText(p.getBankOrCash());
 
         /* int i = 0;
         for (Map.Entry<Date,PassbookAdapterItem> entry : passbookAdapterItemMap.entrySet()) {
@@ -73,10 +79,16 @@ public class PassbookAdapter extends RecyclerView.Adapter<PassbookAdapter.ViewHo
 
     class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public TextView amount;
+        public TextView timeStamp;
+        public TextView category;
+        public TextView bankORCash;
 
         public ViewHolder(View itemView) {
             super(itemView);
             amount = itemView.findViewById(R.id.row_amount);
+            timeStamp = itemView.findViewById(R.id.time_stamp);
+            category = itemView.findViewById(R.id.recycler_category);
+            bankORCash = itemView.findViewById(R.id.recycler_cash_or_bank);
             itemView.setOnClickListener(this);
         }
 

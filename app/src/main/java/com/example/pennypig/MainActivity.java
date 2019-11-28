@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
@@ -27,6 +28,7 @@ public class MainActivity extends AppCompatActivity implements VolleyCallback{
     Button login;
     EditText email;
     EditText password;
+    TextView didntSignUp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +39,7 @@ public class MainActivity extends AppCompatActivity implements VolleyCallback{
 
         email = (EditText) findViewById(R.id.login_email);
         password = (EditText) findViewById(R.id.login_password);
+        didntSignUp = (TextView) findViewById(R.id.didnt_sign_up);
 
         login = (Button) findViewById(R.id.login_button);
         login.setOnClickListener(new View.OnClickListener() {
@@ -45,6 +48,19 @@ public class MainActivity extends AppCompatActivity implements VolleyCallback{
                 companyLogin(email.getText().toString(), password.getText().toString());
             }
         });
+
+        didntSignUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, SignUpActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        if(!SaveSharedPreference.getUserId(MainActivity.this).isEmpty()) {
+            Intent intent = new Intent(MainActivity.this, NavigationDrawer.class);
+            startActivity(intent);
+        }
     }
 
     public void companyLogin(String email, String password) {

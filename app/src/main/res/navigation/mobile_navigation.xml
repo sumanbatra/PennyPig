@@ -36,8 +36,8 @@
         tools:layout="@layout/fragment_share" />
 
     <fragment
-        android:id="@+id/nav_send"
-        android:name="com.example.pennypig.ui.send.SendFragment"
-        android:label="@string/menu_send"
+        android:id="@+id/logout"
+        android:name="com.example.pennypig.ui.send.LogoutFragment"
+        android:label="@string/logout"
         tools:layout="@layout/fragment_send" />
 </navigation>

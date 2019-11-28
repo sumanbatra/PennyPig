@@ -12,27 +12,26 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.pennypig.Adapters.PassbookAdapter;
 import com.example.pennypig.ExpenseCallback;
+import com.example.pennypig.Helpers.DateHelper;
 import com.example.pennypig.IncomeCallback;
 import com.example.pennypig.Model.DataVault;
 import com.example.pennypig.Model.PassbookAdapterItem;
 import com.example.pennypig.R;
 import com.example.pennypig.SharedPreference.SaveSharedPreference;
 import com.example.pennypig.VolleyAPIService;
-import com.example.pennypig.ui.home.HomeFragment;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class PassbookFragment extends Fragment implements IncomeCallback, ExpenseCallback {
@@ -120,8 +119,9 @@ public class PassbookFragment extends Fragment implements IncomeCallback, Expens
 
         for (int i = 0; i < incomeDetail.length; i++) {
             income += Double.parseDouble(incomeDetail[i].amount);
-            PassbookAdapterItem passbookAdapterItem = new PassbookAdapterItem(incomeDetail[i].amount, "Green", new Date(Date.parse(incomeDetail[i].time)));
-            passbookAdapterItemMap.put(new Date(Date.parse(incomeDetail[i].time)), passbookAdapterItem);
+            Date incomeDate = DateHelper.GMTtoLocalTime(incomeDetail[i].time);
+            PassbookAdapterItem passbookAdapterItem = new PassbookAdapterItem(incomeDetail[i].amount, incomeDetail[i].time, "Green", incomeDate, "Income", "Bank");
+            passbookAdapterItemMap.put(incomeDate, passbookAdapterItem);
             passbookAdapterItemArrayList.add(passbookAdapterItem);
         }
 
@@ -131,6 +131,7 @@ public class PassbookFragment extends Fragment implements IncomeCallback, Expens
             passbookAdapter = new PassbookAdapter(R.layout.passbook_list_row, passbookAdapterItemArrayList);
             recyclerView.setHasFixedSize(true);
             recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+            recyclerView.addItemDecoration(new DividerItemDecoration(rootView.getContext(), LinearLayoutManager.VERTICAL));
             recyclerView.setAdapter(passbookAdapter);
         }
 
@@ -148,8 +149,9 @@ public class PassbookFragment extends Fragment implements IncomeCallback, Expens
 
         for (int i = 0; i < expenseDetails.length; i++) {
             expense += Double.parseDouble(expenseDetails[i].amount);
-            PassbookAdapterItem passbookAdapterItem = new PassbookAdapterItem(expenseDetails[i].amount, "Red", new Date(Date.parse(expenseDetails[i].time)));
-            passbookAdapterItemMap.put(new Date(Date.parse(expenseDetails[i].time)), passbookAdapterItem);
+            Date expenseDate = DateHelper.GMTtoLocalTime(expenseDetails[i].time);
+            PassbookAdapterItem passbookAdapterItem = new PassbookAdapterItem(expenseDetails[i].amount, expenseDetails[i].time, "Red", expenseDate, expenseDetails[i].category_id, expenseDetails[i].payment_method);
+            passbookAdapterItemMap.put(expenseDate, passbookAdapterItem);
             passbookAdapterItemArrayList.add(passbookAdapterItem);
         }
 
@@ -159,6 +161,7 @@ public class PassbookFragment extends Fragment implements IncomeCallback, Expens
             passbookAdapter = new PassbookAdapter(R.layout.passbook_list_row, passbookAdapterItemArrayList);
             recyclerView.setHasFixedSize(true);
             recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+            recyclerView.addItemDecoration(new DividerItemDecoration(rootView.getContext(), LinearLayoutManager.VERTICAL));
             recyclerView.setAdapter(passbookAdapter);
         }
 

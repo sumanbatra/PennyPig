@@ -7,4 +7,6 @@
     <color name="aqua_blue">#87CEEB</color>
     <color name="holo_green_dark">#FF669900</color>
     <color name="holo_red_dark">#FFCC0000</color>
+    <color name="dark_gray">#808080</color>
+    <color name="title">#111111</color>
 </resources>

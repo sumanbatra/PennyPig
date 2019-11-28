@@ -98,7 +98,7 @@ public class ExpenseActivity extends AppCompatActivity implements ExpenseCallbac
                 String splitType = "unequal";
 
                 URL += "?user_id=" + userId +
-                        "&category_id=" + "-1" +
+                        "&category_id=" + "Others" +
                         "&payment_method=" + paymentMethod +
                         "&time=" + time +
                         "&amount=" + value +
