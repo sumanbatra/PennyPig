@@ -78,7 +78,7 @@ public class ExpenseActivity extends AppCompatActivity implements ExpenseCallbac
                 DateHelper dateHelper = new DateHelper();
                 String time = dateHelper.getGMTDate();
 
-                if(paymentMethod.isEmpty()) {
+                if(paymentMethod == null) {
                     paymentMethod = "Cash";
                 }
 

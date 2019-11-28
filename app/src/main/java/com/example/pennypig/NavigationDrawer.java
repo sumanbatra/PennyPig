@@ -7,6 +7,7 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import com.example.pennypig.SharedPreference.SaveSharedPreference;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -15,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
+import android.widget.TextView;
 
 public class NavigationDrawer extends AppCompatActivity {
 
@@ -27,15 +29,6 @@ public class NavigationDrawer extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        /* FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });*/
-
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
@@ -45,6 +38,12 @@ public class NavigationDrawer extends AppCompatActivity {
                 R.id.nav_tools, R.id.nav_share, R.id.logout)
                 .setDrawerLayout(drawer)
                 .build();
+//        TextView navigationHeader = (TextView) navigationView.getHeaderView(2).findViewById(R.id.navigation_header);
+//        TextView navigationEmail = (TextView) navigationView.getHeaderView(3).findViewById(R.id.navigation_email);
+//
+//        navigationHeader.setText(SaveSharedPreference.getUserName(getApplicationContext()));
+//        navigationEmail.setText(SaveSharedPreference.getUserEmail(getApplicationContext()));
+
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);

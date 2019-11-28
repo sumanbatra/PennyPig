@@ -95,6 +95,7 @@ public class SignUpActivity extends AppCompatActivity implements VolleyCallback,
             if(password.length() >= 6) {
                 if(!password.equals(rePassword)) {
                     Toast.makeText(SignUpActivity.this, "Password and Confirm password mismatch", Toast.LENGTH_SHORT).show();
+                    progressDialog.dismiss();
                 }
                 else {
                     RequestQueue requestQueue = Volley.newRequestQueue(SignUpActivity.this);

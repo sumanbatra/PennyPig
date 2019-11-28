@@ -3,6 +3,7 @@ package com.example.pennypig;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -30,6 +31,8 @@ public class MainActivity extends AppCompatActivity implements VolleyCallback{
     EditText password;
     TextView didntSignUp;
 
+    ProgressDialog progressDialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setTheme(R.style.AppTheme);
@@ -45,6 +48,12 @@ public class MainActivity extends AppCompatActivity implements VolleyCallback{
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                progressDialog = new ProgressDialog(MainActivity.this, R.style.MyAlertDialogStyle);
+                progressDialog.setTitle("Validating User");
+                progressDialog.setMessage("Wait while we add you to Penny Pig...");
+                progressDialog.setCancelable(false);
+                progressDialog.show();
+
                 companyLogin(email.getText().toString(), password.getText().toString());
             }
         });
@@ -80,7 +89,7 @@ public class MainActivity extends AppCompatActivity implements VolleyCallback{
     @Override
     public void onSuccess(String result) {
         Log.d(MAIN_ACTIVITY_TAG, "onSuccess: " + result);
-        if (!result.equals("Invalid User")) {
+        if (!result.equals("\"Invalid User\"")) {
             GsonBuilder builder = new GsonBuilder();
             Gson gson = builder.create();
             DataVault.UserDetail userDetail = gson.fromJson(result, DataVault.UserDetail.class);
@@ -99,7 +108,7 @@ public class MainActivity extends AppCompatActivity implements VolleyCallback{
             startActivity(intent);
         }
         else {
-            AlertDialog.Builder login_failed = new AlertDialog.Builder(MainActivity.this);
+            AlertDialog.Builder login_failed = new AlertDialog.Builder(MainActivity.this, R.style.MyAlertDialogStyle);
             login_failed.setMessage("Login Failed, invalid credentials")
                     .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                         @Override
@@ -110,5 +119,6 @@ public class MainActivity extends AppCompatActivity implements VolleyCallback{
             AlertDialog alert = login_failed.create();
             alert.show();
         }
+        progressDialog.dismiss();
     }
 }
