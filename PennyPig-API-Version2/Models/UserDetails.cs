@@ -10,6 +10,13 @@ namespace PennyPig_API_Version2.Models
         {
         }
 
+        public UserDetails(string name, string password, string email)
+        {
+            this.name = name;
+            this.email = email;
+            this.password = password;
+        }
+
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; }

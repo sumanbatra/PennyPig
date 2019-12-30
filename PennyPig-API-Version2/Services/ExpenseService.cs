@@ -32,7 +32,7 @@ namespace PennyPig_API_Version2.Services
             }
         }
 
-        public void insertExpense(string user_id, string category_id, string payment_method, string time, string amount)
+        public void insertExpense(string user_id, string category_id, string payment_method, string time, string amount, string description, string split_type, string location, string split)
         {
             var document = new BsonDocument
             {
@@ -43,10 +43,12 @@ namespace PennyPig_API_Version2.Services
                 {"amount", new BsonString(amount)}
             };
 
-            ExpenseDetails expenseDetails = new ExpenseDetails(user_id, category_id, payment_method, time, amount);
+            ExpenseDetails expenseDetails = new ExpenseDetails(user_id, category_id, payment_method, time, amount, description, split_type, location, split);
 
             _expense.InsertOne(expenseDetails);
         }
+
+        //public void insertExpenseWith
 
         public List<ExpenseDetails> getUserExpenses(string userId)
         {
@@ -54,13 +56,7 @@ namespace PennyPig_API_Version2.Services
             {
                 List<ExpenseDetails> expense = new List<ExpenseDetails>();
                 expense = _expense.Find(new BsonDocument { { "user_id", userId } }).ToList();
-                /* _expense.Find<List<ExpenseDetails>>(new BsonDocument { { "user_id", userId } }).
-                    ForEachAsync(
-                        expense =>
-                            {
-
-                            }
-                    ); */
+                
                 return expense;
             }
             catch (Exception e)

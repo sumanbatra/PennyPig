@@ -112,6 +112,35 @@ namespace PennyPig_API_Version2.Controller
 
             return NoContent();
         }
+
+        [HttpPost]
+        [ActionName("ValidateUserEmail")]
+        public IActionResult ValidateUserEmail(string email)
+        {
+            string temp = email;
+            UserDetails user = _userService.getUserEmail(email);
+            if (user != null)
+            {
+                return new ObjectResult(user);
+            }
+            return new ObjectResult(JsonConvert.SerializeObject("Invalid User"));
+        }
+
+        [HttpPost]
+        [ActionName("InsertUser")]
+        public int InsertUser(string name, string password, string email)
+        {
+            try
+            {
+                _userService.insertUser(name, password, email);
+                return 1;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return 0;
+            }
+        }
     }
 
 }

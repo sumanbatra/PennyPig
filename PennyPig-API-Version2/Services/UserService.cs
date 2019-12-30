@@ -64,5 +64,26 @@ namespace PennyPig_API_Version2.Services
                 return null;
             }
         }
+
+        public UserDetails getUserEmail(string email)
+        {
+            try
+            {
+                UserDetails user = _users.Find<UserDetails>(new BsonDocument { { "email", email } }).FirstAsync().Result;
+                return user;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return null;
+            }
+        }
+
+        public void insertUser(string name, string password, string email)
+        {
+            UserDetails userDetails = new UserDetails(name, password, email);
+
+            _users.InsertOne(userDetails);
+        }
     }
 }

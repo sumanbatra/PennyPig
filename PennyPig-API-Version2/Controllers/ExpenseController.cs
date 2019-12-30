@@ -19,11 +19,11 @@ namespace PennyPig_API_Version2.Controllers
 
         [HttpPost]
         [ActionName("AddExpense")]
-        public int AddExpense(string user_id, string category_id, string payment_method, string time, string amount)
+        public int AddExpense(string user_id, string category_id, string payment_method, string time, string amount, string description, string split_type, string location, string split)
         {
             try
             {
-                _expenseService.insertExpense(user_id, category_id, payment_method, time, amount);
+                _expenseService.insertExpense(user_id, category_id, payment_method, time, amount, description, split_type, location, split);
                 return 1;
             }
             catch (Exception e)
