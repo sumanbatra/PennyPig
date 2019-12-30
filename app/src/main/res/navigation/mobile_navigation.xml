@@ -37,7 +37,7 @@
 
     <fragment
         android:id="@+id/logout"
-        android:name="com.example.pennypig.ui.send.LogoutFragment"
+        android:name="com.example.pennypig.ui.logout.LogoutFragment"
         android:label="@string/logout"
         tools:layout="@layout/fragment_send" />
 </navigation>

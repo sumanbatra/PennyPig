@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.pennypig.Helpers.DateHelper;
 import com.example.pennypig.SharedPreference.SaveSharedPreference;
@@ -33,6 +34,9 @@ public class IncomeActivity extends AppCompatActivity implements IncomeCallback 
     int equalCheck = 0;
     ProgressDialog progressDialog;
     boolean checkDot = false;
+    boolean checkNumber = false;
+    int maxtwo = 0;
+    boolean dotpressed = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -112,92 +116,149 @@ public class IncomeActivity extends AppCompatActivity implements IncomeCallback 
         volleyAPIService.volleyPost(URL, params, IncomeActivity.this);
     }
 
-    public void setValue(View view) {
-        String tag = String.valueOf(view.getTag());
+
+    public void number(String tag){
         if (tag.equals("buttonIncomeOne")) {
             Log.i(TAG, "setValue: buttonOne");
             value += "1";
+            checkNumber = true;
         } else if (tag.equals("buttonIncomeTwo")) {
             Log.i(TAG, "setValue: buttonTwo");
             value += "2";
+            checkNumber = true;
         } else if (tag.equals("buttonIncomeThree")) {
             Log.i(TAG, "setValue: buttonThree");
             value += "3";
+            checkNumber = true;
         } else if (tag.equals("buttonIncomeFour")) {
             Log.i(TAG, "setValue: buttonFour");
             value += "4";
+            checkNumber = true;
         } else if (tag.equals("buttonIncomeFive")) {
             Log.i(TAG, "setValue: buttonFive");
             value += "5";
+            checkNumber = true;
         } else if (tag.equals("buttonIncomeSix")) {
             Log.i(TAG, "setValue: buttonSix");
             value += "6";
+            checkNumber = true;
         } else if (tag.equals("buttonIncomeSeven")) {
             Log.i(TAG, "setValue: buttonSeven");
             value += "7";
+            checkNumber = true;
         } else if (tag.equals("buttonIncomeEight")) {
             Log.i(TAG, "setValue: buttonEight");
             value += "8";
+            checkNumber = true;
         } else if (tag.equals("buttonIncomeNine")) {
             Log.i(TAG, "setValue: buttonNine");
             value += "9";
-        } else if (tag.equals("buttonIncomeZero")&& value.length() > 0) {
+            checkNumber = true;
+
+        } else if (tag.equals("buttonIncomeZero") && value.length() > 0) {
             Log.i(TAG, "setValue: buttonZero");
             value += "0";
-        } else if (tag.equals("buttonIncomeDot") && checkDot == false) {
-            Log.i(TAG, "setValue: buttonDot");
-            value += ".";
-            checkDot = true;
-        } else if (tag.equals("eraseIncomeButton") && value.length() > 0) {
-            Log.i(TAG, "setValue: Erase Button");
-            value = value.substring(0, value.length() - 1);
-            if (value.contains(".")) {
-                checkDot = true;
-            } else {
-                checkDot = false;
-            }
-            if (value.equals("ERRO")) {
-                value = "";
-            }
-
-        } else if (tag.equals("buttonIncomePlus")) {
-            initialValue = Double.parseDouble(value);
-            equalCheck = 1;
-            value = "";
-        } else if (tag.equals("buttonIncomeMinus")) {
-            initialValue = Double.parseDouble(value);
-            equalCheck = 2;
-            value = "";
-        } else if (tag.equals("buttonIncomeMultiplication")) {
-            initialValue = Double.parseDouble(value);
-            equalCheck = 3;
-            value = "";
-        } else if (tag.equals("buttonIncomeDivision")) {
-            initialValue = Double.parseDouble(value);
-            equalCheck = 4;
-            value = "";
-        } else if (tag.equals("buttonIncomeEquals")) {
-            if (equalCheck == 1) {
-                initialValue += Double.parseDouble(value);
-                value = String.valueOf(initialValue);
-            } else if (equalCheck == 2) {
-                initialValue -= Double.parseDouble(value);
-                value = String.valueOf(initialValue);
-            } else if (equalCheck == 3) {
-                initialValue *= Double.parseDouble(value);
-                value = String.valueOf(initialValue);
-            } else if (equalCheck == 4) {
-                if (value.equals("0")) {
-                    value = "ERROR";
-                } else {
-                    initialValue /= Double.parseDouble(value);
-                    value = String.valueOf(initialValue);
-                }
-            }
-            initialValue = 0;
+            checkNumber = true;
         }
-         valueText.setText(value);
+    }
 
+    public void setValue(View view) {
+        try {
+            String tag = String.valueOf(view.getTag());
+
+            if (value.equals("ERROR")) {
+                value = "";
+                valueText.setText(value);
+            }
+            if (dotpressed == false) {
+                number(tag);
+            } else if (dotpressed && maxtwo <= 1) {
+                number(tag);
+                maxtwo++;
+            }
+            if (tag.equals("buttonIncomeDot") && checkDot == false) {
+                Log.i(TAG, "setValue: buttonDot");
+                value += ".";
+                checkNumber = true;
+                dotpressed = true;
+                checkDot = true;
+            } else if (tag.equals("eraseIncomeButton") && value.length() > 0) {
+                Log.i(TAG, "setValue: Erase Button");
+                String delnum = value.substring(value.length() - 1, value.length());
+                value = value.substring(0, value.length() - 1);
+                if (value.contains(".")) {
+                    checkDot = true;
+                } else {
+                    checkDot = false;
+                }
+                if (value.equals("ERRO")) {
+                    value = "";
+                }
+                if (dotpressed && maxtwo > 0) {
+                    maxtwo--;
+                } else if (dotpressed && maxtwo < 0) {
+                    dotpressed = false;
+                }
+                if (delnum.equals(".")) {
+                    dotpressed = false;
+                    maxtwo = 0;
+                }
+                Log.i(TAG, "delValue: " + delnum);
+                Log.i(TAG, "delValue: " + maxtwo);
+
+            } else if (tag.equals("buttonIncomePlus") && checkNumber) {
+                initialValue = Double.parseDouble(value);
+                equalCheck = 1;
+                checkNumber = false;
+                dotpressed = false;
+                value = "";
+            } else if (tag.equals("buttonIncomeMinus") && checkNumber) {
+                initialValue = Double.parseDouble(value);
+                equalCheck = 2;
+                checkNumber = false;
+                dotpressed = false;
+                value = "";
+            } else if (tag.equals("buttonIncomeMultiplication") && checkNumber) {
+                initialValue = Double.parseDouble(value);
+                equalCheck = 3;
+                checkNumber = false;
+                dotpressed = false;
+                value = "";
+            } else if (tag.equals("buttonIncomeDivision") && checkNumber) {
+                initialValue = Double.parseDouble(value);
+                equalCheck = 4;
+                checkNumber = false;
+                dotpressed = false;
+                value = "";
+            } else if (tag.equals("buttonIncomeEquals") && checkNumber) {
+                if (equalCheck == 1) {
+                    initialValue += Double.parseDouble(value);
+                    value = String.valueOf(initialValue);
+                } else if (equalCheck == 2) {
+                    initialValue -= Double.parseDouble(value);
+                    value = String.valueOf(initialValue);
+                } else if (equalCheck == 3) {
+                    initialValue *= Double.parseDouble(value);
+                    value = String.valueOf(initialValue);
+                } else if (equalCheck == 4) {
+                    if (value.equals("0")) {
+                        value = "ERROR";
+                    } else {
+                        initialValue /= Double.parseDouble(value);
+                        value = String.valueOf(initialValue);
+                    }
+                }
+                initialValue = 0;
+                checkNumber = false;
+            }
+            valueText.setText(value);
+        }
+        catch (Exception e) {
+            // Toast.makeText(this, e.toString(), Toast.LENGTH_SHORT).show();
+            value = "";
+            valueText.setText("");
+
+        }
     }
 
     @Override

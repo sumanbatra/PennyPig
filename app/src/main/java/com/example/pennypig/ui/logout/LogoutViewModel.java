@@ -1,4 +1,4 @@
-package com.example.pennypig.ui.send;
+package com.example.pennypig.ui.logout;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

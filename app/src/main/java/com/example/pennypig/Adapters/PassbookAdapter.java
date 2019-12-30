@@ -58,23 +58,6 @@ public class PassbookAdapter extends RecyclerView.Adapter<PassbookAdapter.ViewHo
         timeStamp.setText(p.getTimeStamp());
         category.setText(p.getCategory());
         bankOrCash.setText(p.getBankOrCash());
-
-        /* int i = 0;
-        for (Map.Entry<Date,PassbookAdapterItem> entry : passbookAdapterItemMap.entrySet()) {
-            if(i == listPosition) {
-                PassbookAdapterItem p = passbookAdapterItemMap.get(entry.getKey());
-                if(p.getColour() == "Green") {
-                    amount.setTextColor(Color.GREEN);
-                }
-                else {
-                    amount.setTextColor(Color.RED);
-                }
-                String amountString = "$ " + p.getAmount();
-                amount.setText(amountString);
-                break;
-            }
-            i++;
-        } */
     }
 
     class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {

@@ -1,5 +1,8 @@
 package com.example.pennypig;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.navigation.NavController;
@@ -16,6 +19,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.TextView;
 
 public class NavigationDrawer extends AppCompatActivity {
@@ -34,15 +38,9 @@ public class NavigationDrawer extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow,
-                R.id.nav_tools, R.id.nav_share, R.id.logout)
+                R.id.nav_home, R.id.nav_gallery, R.id.logout)
                 .setDrawerLayout(drawer)
                 .build();
-//        TextView navigationHeader = (TextView) navigationView.getHeaderView(2).findViewById(R.id.navigation_header);
-//        TextView navigationEmail = (TextView) navigationView.getHeaderView(3).findViewById(R.id.navigation_email);
-//
-//        navigationHeader.setText(SaveSharedPreference.getUserName(getApplicationContext()));
-//        navigationEmail.setText(SaveSharedPreference.getUserEmail(getApplicationContext()));
 
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
@@ -54,6 +52,19 @@ public class NavigationDrawer extends AppCompatActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.navigation_drawer, menu);
         return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_settings:
+                // do whatever
+                Intent intent = new Intent(NavigationDrawer.this, AboutUsActivity.class);
+                startActivity(intent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     @Override

@@ -28,21 +28,25 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ExpenseActivity extends AppCompatActivity implements ExpenseCallback,AdapterView.OnItemSelectedListener{
+public class ExpenseActivity extends AppCompatActivity implements ExpenseCallback, AdapterView.OnItemSelectedListener {
 
     private static final String TAG = "ExpenseActivity";
 
     TextView valueText;
     String value = "";
-    double initialValue=0;
-    int equalCheck =0;
+    double initialValue = 0;
+    int equalCheck = 0;
     ProgressDialog progressDialog;
     Button buttonExpenseFinal;
     RadioGroup radioGroup;
     String paymentMethod;
+    boolean checkDot = false;
     Spinner cateo_spinner;
     String category_name;
     int intent_category_number = 0;
+    boolean checkNumber = false;
+    int maxtwo = 0;
+    boolean dotpressed = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,15 +72,14 @@ public class ExpenseActivity extends AppCompatActivity implements ExpenseCallbac
         progressDialog.setMessage("Wait while loading...");
         progressDialog.setCancelable(false);
 
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.categories, R.layout.support_simple_spinner_dropdown_item);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.categories, R.layout.support_simple_spinner_dropdown_item);
         adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
         cateo_spinner.setAdapter(adapter);
         cateo_spinner.setOnItemSelectedListener(this);
-        Intent iin= getIntent();
+        Intent iin = getIntent();
         Bundle b = iin.getExtras();
-        if(b!=null)
-        {
-            intent_category_number =(int) b.get("intent_category_number");
+        if (b != null) {
+            intent_category_number = (int) b.get("intent_category_number");
         }
         cateo_spinner.setSelection(intent_category_number);
 
@@ -86,6 +89,8 @@ public class ExpenseActivity extends AppCompatActivity implements ExpenseCallbac
             public boolean onLongClick(View v) {
                 value = "";
                 valueText.setText(value);
+                dotpressed = false;
+                maxtwo = 0;
                 return true;
             }
         });
@@ -100,7 +105,7 @@ public class ExpenseActivity extends AppCompatActivity implements ExpenseCallbac
                 DateHelper dateHelper = new DateHelper();
                 String time = dateHelper.getGMTDate();
 
-                if(paymentMethod == null) {
+                if (paymentMethod == null) {
                     paymentMethod = "Cash";
                 }
 
@@ -146,111 +151,155 @@ public class ExpenseActivity extends AppCompatActivity implements ExpenseCallbac
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 int checkedButton = checkedId;
-                RadioButton radioButton = (RadioButton)group.findViewById(checkedId);
+                RadioButton radioButton = (RadioButton) group.findViewById(checkedId);
                 paymentMethod = String.valueOf(radioButton.getText());
                 Log.i(TAG, "onCheckedChanged: ");
             }
         });
     }
 
-    public void setValue(View view){
-        String tag = String.valueOf(view.getTag());
-        if(tag.equals("buttonExpenseOne")){
-            Log.i(TAG, "setValue: buttonOne");
-            value +="1";
+    public void number(String tag) {
+        try {
+            if (tag.equals("buttonExpenseOne")) {
+                Log.i(TAG, "setValue: buttonOne");
+                value += "1";
+                checkNumber = true;
+            } else if (tag.equals("buttonExpenseTwo")) {
+                Log.i(TAG, "setValue: buttonTwo");
+                value += "2";
+                checkNumber = true;
+            } else if (tag.equals("buttonExpenseThree")) {
+                Log.i(TAG, "setValue: buttonThree");
+                value += "3";
+                checkNumber = true;
+            } else if (tag.equals("buttonExpenseFour")) {
+                Log.i(TAG, "setValue: buttonFour");
+                value += "4";
+                checkNumber = true;
+            } else if (tag.equals("buttonExpenseFive")) {
+                Log.i(TAG, "setValue: buttonFive");
+                value += "5";
+                checkNumber = true;
+            } else if (tag.equals("buttonExpenseSix")) {
+                Log.i(TAG, "setValue: buttonSix");
+                value += "6";
+                checkNumber = true;
+            } else if (tag.equals("buttonExpenseSeven")) {
+                Log.i(TAG, "setValue: buttonSeven");
+                value += "7";
+                checkNumber = true;
+            } else if (tag.equals("buttonExpenseEight")) {
+                Log.i(TAG, "setValue: buttonEight");
+                value += "8";
+                checkNumber = true;
+            } else if (tag.equals("buttonExpenseNine")) {
+                Log.i(TAG, "setValue: buttonNine");
+                value += "9";
+                checkNumber = true;
+            } else if (tag.equals("buttonExpenseZero")) {
+                Log.i(TAG, "setValue: buttonZero");
+                value += "0";
+                checkNumber = true;
+            }
+        } catch (Exception e) {
+            Toast.makeText(this, e.toString(), Toast.LENGTH_SHORT).show();
         }
-        else if(tag.equals("buttonExpenseTwo")){
-            Log.i(TAG, "setValue: buttonTwo");
-            value +="2";
-        }
-        else if(tag.equals("buttonExpenseThree")){
-            Log.i(TAG, "setValue: buttonThree");
-            value +="3";
-        }
-        else if(tag.equals("buttonExpenseFour")){
-            Log.i(TAG, "setValue: buttonFour");
-            value +="4";
-        }
-        else if(tag.equals("buttonExpenseFive")){
-            Log.i(TAG, "setValue: buttonFive");
-            value +="5";
-        }
-        else if(tag.equals("buttonExpenseSix")){
-            Log.i(TAG, "setValue: buttonSix");
-            value +="6";
-        }
-        else if(tag.equals("buttonExpenseSeven")){
-            Log.i(TAG, "setValue: buttonSeven");
-            value +="7";
-        }
-        else if(tag.equals("buttonExpenseEight")){
-            Log.i(TAG, "setValue: buttonEight");
-            value +="8";
-        }
-        else if(tag.equals("buttonExpenseNine")){
-            Log.i(TAG, "setValue: buttonNine");
-            value +="9";
-        }
-        else if(tag.equals("buttonExpenseZero")){
-            Log.i(TAG, "setValue: buttonZero");
-            value +="0";
-        }
-        else if(tag.equals("buttonExpenseDot")){
-            Log.i(TAG, "setValue: buttonDot");
-            value +=".";
-        }
-        else if(tag.equals("eraseButton") && value.length()>0){
-            Log.i(TAG, "setValue: Erase Button");
-            value = value.substring(0, value.length()-1);
-            if (value.equals("ERRO")){
+    }
+
+    public void setValue(View view) {
+        try {
+            String tag = String.valueOf(view.getTag());
+            if (value.equals("ERROR")) {
                 value = "";
+                valueText.setText(value);
             }
-        }
-        else if(tag.equals("buttonExpensePlus")){
-            initialValue = Double.parseDouble(value);
-            equalCheck = 1;
-            value = "";
-        }
-        else if(tag.equals("buttonExpenseMinus")){
-            initialValue = Double.parseDouble(value);
-            equalCheck = 2;
-            value = "";
-        }
-        else if(tag.equals("buttonExpenseMultiplication")){
-            initialValue = Double.parseDouble(value);
-            equalCheck = 3;
-            value = "";
-        }
-        else if(tag.equals("buttonExpenseDivision")){
-            initialValue = Double.parseDouble(value);
-            equalCheck = 4;
-            value = "";
-        }
-        else if(tag.equals("buttonExpenseEquals")){
-            if(equalCheck == 1) {
-                initialValue += Double.parseDouble(value);
-                value = String.valueOf(initialValue);
+            if (dotpressed == false) {
+                number(tag);
+            } else if (dotpressed && maxtwo <= 1) {
+                number(tag);
+                maxtwo++;
             }
-            else if(equalCheck == 2) {
-                initialValue -= Double.parseDouble(value);
-                value = String.valueOf(initialValue);
-            }
-            else if(equalCheck == 3) {
-                initialValue *= Double.parseDouble(value);
-                value = String.valueOf(initialValue);
-            }
-            else if(equalCheck == 4) {
-                if(value.equals("0")){
-                    value = "ERROR";
+            if (tag.equals("buttonExpenseDot") && checkDot == false) {
+                Log.i(TAG, "setValue: buttonDot");
+                value += ".";
+                checkNumber = true;
+                dotpressed = true;
+                checkDot = true;
+            } else if (tag.equals("eraseButton") && value.length() > 0) {
+                Log.i(TAG, "setValue: Erase Button");
+                String delnum = value.substring(value.length() - 1, value.length());
+                value = value.substring(0, value.length() - 1);
+                if (value.contains(".")) {
+                    checkDot = true;
+                } else {
+                    checkDot = false;
                 }
-                else {
-                    initialValue /= Double.parseDouble(value);
+                if (value.equals("ERRO")) {
+                    value = "";
+                }
+                if (dotpressed && maxtwo > 0) {
+                    maxtwo--;
+                } else if (dotpressed && maxtwo < 0) {
+                    dotpressed = false;
+                }
+                if (delnum.equals(".")) {
+                    dotpressed = false;
+                    maxtwo = 0;
+                }
+                Log.i(TAG, "delValue: " + delnum);
+                Log.i(TAG, "delValue: " + maxtwo);
+            } else if (tag.equals("buttonExpensePlus") && checkNumber) {
+                initialValue = Double.parseDouble(value);
+                equalCheck = 1;
+                checkNumber = false;
+                dotpressed = false;
+                value = "";
+            } else if (tag.equals("buttonExpenseMinus") && checkNumber) {
+
+                initialValue = Double.parseDouble(value);
+                equalCheck = 2;
+                checkNumber = false;
+                dotpressed = false;
+                value = "";
+            } else if (tag.equals("buttonExpenseMultiplication") && checkNumber) {
+                initialValue = Double.parseDouble(value);
+                equalCheck = 3;
+                dotpressed = false;
+                checkNumber = false;
+                value = "";
+            } else if (tag.equals("buttonExpenseDivision") && checkNumber) {
+                initialValue = Double.parseDouble(value);
+                equalCheck = 4;
+                dotpressed = false;
+                checkNumber = false;
+                value = "";
+            } else if (tag.equals("buttonExpenseEquals") && checkNumber) {
+                if (equalCheck == 1) {
+                    initialValue += Double.parseDouble(value);
                     value = String.valueOf(initialValue);
+                } else if (equalCheck == 2) {
+                    initialValue -= Double.parseDouble(value);
+                    value = String.valueOf(initialValue);
+                } else if (equalCheck == 3) {
+                    initialValue *= Double.parseDouble(value);
+                    value = String.valueOf(initialValue);
+                } else if (equalCheck == 4) {
+                    if (value.equals("0")) {
+                        value = "ERROR";
+                    } else {
+                        initialValue /= Double.parseDouble(value);
+                        value = String.valueOf(initialValue);
+                    }
                 }
+                initialValue = 0;
+                checkNumber = false;
             }
-            initialValue=0;
+            valueText.setText(value);
+        } catch (Exception e) {
+            // Toast.makeText(this, e.toString(), Toast.LENGTH_SHORT).show();
+            value = "";
+            valueText.setText("");
         }
-        valueText.setText(value);
 
     }
 
@@ -266,7 +315,6 @@ public class ExpenseActivity extends AppCompatActivity implements ExpenseCallbac
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
         category_name = adapterView.getItemAtPosition(i).toString();
-//        Toast.makeText(adapterView.getContext(), text, Toast.LENGTH_SHORT).show();
     }
 
     @Override

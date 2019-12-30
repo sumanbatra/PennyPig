@@ -76,6 +76,7 @@ public class AddContact extends AppCompatActivity implements VolleyCallback, Ada
                 intent.putExtra("email_list", emailList);
                 intent.putExtra("type_add", type_add);
                 startActivity(intent);
+                finish();
             }
         });
         ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(this, R.array.splitAccordingly, R.layout.support_simple_spinner_dropdown_item);
